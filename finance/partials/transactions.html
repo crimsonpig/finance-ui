@@ -90,10 +90,10 @@
 
 <h3 id="btnRptToggle" class="navButton-{{showReceipts}}" ng-click="displayReceipts()">Split a Receipt</h3>
 <div id="sctReceipt" ng-show="showReceipts" ng-controller="ReceiptCtrl">
-<!--div id="iptReceiptDate" class="receiptItem">
+<div id="iptReceiptDate" class="receiptItem">
 <label>Receipt Date</label>
 <input type="text" ng-model="receiptDate"/>
-</div-->
+</div>
 <div id="receiptInputAndResults">
 <div id="receiptInput">
 	<table id="tblReceiptInput" class="receiptItem">
@@ -154,7 +154,7 @@
 			</tr>
 		</tbody>
 	</table>
-	<!--button type="button" id="btnSaveAllRpt" class="receiptItem" ng-click="saveAllReceiptItems()">Save All</button-->
+	<button type="button" id="btnSaveAllRpt" class="receiptItem" ng-click="saveAllReceiptItems()">Save All</button>
 	<button type="button" class="receiptItem" ng-click="deleteAllReceiptItems()">Cancel All</button>
 	<div id="checkTotals">
 		<div>Check Subtotal: {{checkSubtotal}} 

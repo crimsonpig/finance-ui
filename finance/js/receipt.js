@@ -90,18 +90,17 @@ financeControllers.controller('ReceiptCtrl', ['$scope', 'Utils',
 			}
 			Utils.focusOnButton("btnAddRpt");
 		}
-/*
+
 		$scope.saveAllReceiptItems = function(){
 			if($scope.receiptDate != null && !Utils.isMalformedDate($scope.receiptDate)){
 				$scope.calculatedReceiptItems.map(function(calcItem){
 					$scope.expensesToAdd.push({"tDate": $scope.receiptDate, "category": calcItem.category, "amount": calcItem.total, "isNew": true});
 				});
-				$scope.processReceipts = false;
 				$scope.showExpenses = true;
 				document.getElementById("btnSaveAllExp").focus();
 			}
 		}
-*/		
+		
 		$scope.deleteAllReceiptItems = function(){
 			$scope.calculatedReceiptItems.length = 0;
 			$scope.receiptItems.length = 0;
