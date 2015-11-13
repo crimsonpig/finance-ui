@@ -63,3 +63,47 @@ reportControllers.controller('ReportCtrl', ['$scope', '$location', 'DateRange', 
 			}
 		}
 }]);
+	
+reportControllers.controller('MonthlyCtrl', ['$scope', '$location', 'DateRange', 'MonthlyReport', 
+	function($scope, $location, DateRange, MonthlyReport) {
+		var queryString = $location.search();
+		if(queryString.startDt != null && queryString.endDt != null){
+			debug('In MonthlyCtrl, reading from query string: start date = '+queryString.startDt+', end date = '+queryString.endDt);
+			DateRange.setDates(queryString.startDt, queryString.endDt);
+		}
+		var startDt = DateRange.startDate;
+		var endDt = DateRange.endDate;
+
+		$scope.summarizedTransactions = [];
+		$scope.incomesTotal = 0.00;
+		$scope.expensesTotal = 0.00;
+		$scope.netTotal = 0.00;
+
+		if(startDt != '' && endDt != ''){
+			$scope.monthlyReport = MonthlyReport.get({startDt: startDt, endDt: endDt}, function(monthlyReport){
+				//alert(angular.toJson(monthlyReport,true));		
+				$scope.summarizedTransactions = monthlyReport.summarizedTransactions;
+				$scope.incomesTotal = monthlyReport.incomesTotal;
+				$scope.expensesTotal = monthlyReport.expensesTotal;
+				$scope.netTotal = monthlyReport.netTotal;
+			});
+		}
+		
+		var monthNames = new Array();
+		monthNames[0] = "January";
+		monthNames[1] = "February";
+		monthNames[2] = "March";
+		monthNames[3] = "April";
+		monthNames[4] = "May";
+		monthNames[5] = "June";
+		monthNames[6] = "July";
+		monthNames[7] = "August";
+		monthNames[8] = "September";
+		monthNames[9] = "October";
+		monthNames[10] = "November";
+		monthNames[11] = "December";
+		
+		$scope.monthText = function(monthInt){
+			return monthNames[monthInt-1];
+		};
+}]);

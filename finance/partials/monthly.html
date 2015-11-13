@@ -1,0 +1,55 @@
+<div class="totalDisplay">
+	<h3>Total Income: {{incomesTotal.toFixed(2)}}</h3>
+	<h3>Total Expenses: {{expensesTotal.toFixed(2)}}</h3>
+	<h3 style="border-top: thin solid black">Net Gain: {{netTotal.toFixed(2)}}</h3>
+</div>
+<div ng-repeat="summary in summarizedTransactions | orderBy:['year','month']:true">
+	<div class="totalDisplay">
+		<table class="monthlyTotalTable" >
+			<tr>
+				<td class="monthlyTotalCell">{{monthText(summary.month)}} {{summary.year}}</td>
+				<td class="monthlyTotalCell"><span class="monthlyLabel">Income:</span> {{summary.incomesTotal.toFixed(2)}}</td>
+				<td class="monthlyTotalCell"><span class="monthlyLabel">Expenses:</span> {{summary.expensesTotal.toFixed(2)}}</td>
+				<td class="monthlyTotalCell"><span class="monthlyLabel">Net Gain:</span> {{summary.netTotal.toFixed(2)}}</td>
+				<td class="monthlyTotalCell"><span class="monthlyLabel">Show Details</span> <input type="checkbox" ng-model="summary.showDetails" /> </td>
+			</tr>
+		</table>
+		<div id="monthlyDetails" ng-show="summary.showDetails">
+			<div id="incomeDetails">
+				<div class="bold">Income Summary</div>
+				<table>
+					<thead>
+						<tr>
+							<th>Category</th>
+							<th>Amount</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="income in summary.incomes | orderBy:'amount':true">
+							<td>{{income.category}}</td>
+							<td>{{income.amount.toFixed(2)}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div id="expenseDetails">
+				<div class="bold">Expense Summary</div>
+				<table>
+					<thead>
+						<tr>
+							<th>Category</th>
+							<th>Amount</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="expense in summary.expenses | orderBy:'amount':true">
+							<td>{{expense.category}}</td>
+							<td>{{expense.amount.toFixed(2)}}</td>
+						</tr>
+					</tbody>
+				</table>		
+			</div>
+		</div>		
+	</div>
+
+</div>

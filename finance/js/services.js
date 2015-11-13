@@ -44,6 +44,11 @@ financeServices.factory('TransactionsReport', ['$resource',
 		return $resource('http://localhost:9069/reports/transactions');
 }]);
 
+financeServices.factory('MonthlyReport', ['$resource',
+	function($resource){
+		return $resource('http://localhost:9069/reports/monthly');
+}]);
+
 financeServices.service('Utils', function(){
 	
 	function saveAllInputRows(rowsToSave, saveFunction){

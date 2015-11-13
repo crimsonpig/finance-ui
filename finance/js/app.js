@@ -10,6 +10,10 @@ financeApp.config(['$routeProvider', '$locationProvider', function($routeProvide
 			controller:'ReportCtrl',
 			templateUrl:'partials/reports.html'
 		})
+		.when('/monthly', {
+			controller:'MonthlyCtrl',
+			templateUrl:'partials/monthly.html'
+		})
 		.otherwise({
 			redirectTo: '/transactions'
 		});
