@@ -25,6 +25,27 @@ financeControllers.controller('SearchCtrl', ['$scope', '$location', 'DateRange',
 		};
 }]);
 
+financeControllers.controller('MainCtrl', ['$scope', '$location', function($scope, $location){
+		$scope.expenses = [];
+		$scope.incomes = [];	
+		$scope.transactionsReport = {expenses:[], incomes:[]};
+		$scope.showTransactions = false;
+		$scope.showReports = false;
+		
+		$scope.resetTransactionsReport = function(){
+			$scope.showReports = false;
+		}
+						
+		$scope.displayReports = function(){
+			$scope.showReports = !($scope.showReports);
+		};		
+				
+		$scope.displayTransactions = function(){
+			$scope.showTransactions = !($scope.showTransactions);
+		};
+		
+}]);
+
 financeControllers.controller('TransCtrl', ['$scope', '$location', 
 	'DateRange', 'Expenses', 'Incomes', 'Utils', 
 	function ($scope, $location, DateRange, Expenses, Incomes, Utils) {
@@ -37,15 +58,14 @@ financeControllers.controller('TransCtrl', ['$scope', '$location',
 		if(queryString.startDt != null && queryString.endDt != null){
 			DateRange.setDates(queryString.startDt, queryString.endDt);
 		} 
-		
+
 		$scope.expOrderProp = 'tDate';
 		$scope.expOrderToggle = true;
 		$scope.incOrderProp = 'tDate';
 		$scope.incOrderToggle = true;
 		$scope.expTotal = 0.00;
 		$scope.incTotal = 0.00;
-		$scope.showIncomes = true;
-		$scope.showExpenses = true;
+
 		$scope.showReceipts = false;
 		$scope.displayReceipts = function(){
 			$scope.showReceipts = !($scope.showReceipts);
@@ -57,32 +77,17 @@ financeControllers.controller('TransCtrl', ['$scope', '$location',
 			$scope.expenses = Expenses.query({startDt: startDt, endDt: endDt});
 			$scope.incomes = Incomes.query({startDt: startDt, endDt: endDt});
 
-		}else{
-			$scope.expenses = [];
-			$scope.incomes = [];
 		}
-
+		
 		function clickOnEnter(event, func){
 			if(event.keyCode === 13){
 				func();
 			}
 		};
 
-		$scope.displayIncomes = function(){
-			$scope.showIncomes = !($scope.showIncomes);
-		};
-		
-		$scope.kDisplayIncomes = function(event){ 
-			clickOnEnter(event, $scope.displayIncomes); 			
-		}
-
-		$scope.displayExpenses = function(){
-			$scope.showExpenses = !($scope.showExpenses);
-		};
-
-		$scope.kDisplayExpenses = function(event){
-			clickOnEnter(event, $scope.displayExpenses);
-		};
+		$scope.kDisplayTransactions = function(event){
+			clickOnEnter(event, $scope.displayTransactions);
+		};		
 		
 		$scope.sortTransactionsBy = function(transactionType, fieldName){
 			if(transactionType == 'expenses'){
@@ -188,6 +193,7 @@ financeControllers.controller('TransCtrl', ['$scope', '$location',
 					tToDisplay.amount = parseFloat(newT.amount.toFixed(2));
 					postSaveList.push(tToDisplay);
 					Utils.deleteRow(transaction, inputList);
+					$scope.resetTransactionsReport();
 				}, function(){
 					debug("FAILURE TO SAVE");
 				});
@@ -201,6 +207,7 @@ financeControllers.controller('TransCtrl', ['$scope', '$location',
 				Expenses.delete({id:expense.tid});
 				var idx = $scope.expenses.indexOf(expense);
 				$scope.expenses.splice(idx,1);
+				$scope.resetTransactionsReport();
 			}
 		}
 
@@ -209,6 +216,7 @@ financeControllers.controller('TransCtrl', ['$scope', '$location',
 				Incomes.delete({id:income.tid});
 				var idx = $scope.incomes.indexOf(income);
 				$scope.incomes.splice(idx,1);
+				$scope.resetTransactionsReport();
 			}
 		}
 

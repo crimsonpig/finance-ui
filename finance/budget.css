@@ -1,7 +1,6 @@
 body {
 	font-family: Helvetica, Arial, Tahoma, sans-serif;
 	margin: 4px 0px;
-	padding: 0;
 }
 
 table {
@@ -124,8 +123,7 @@ h3 {
 	text-align: center;
 	border: thin solid #239944;
 	border-radius: 8px;
-	padding: 0% 1%;
-	margin-top: 0.5%;
+	margin-top: 0px;
 	margin-left: 1.5%;
 	margin-right: 1.5%;
 	margin-bottom: 0.5%;

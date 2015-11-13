@@ -4,12 +4,11 @@ reportControllers.controller('ReportCtrl', ['$scope', '$location', 'DateRange', 
 	function($scope, $location, DateRange, TransactionsReport) {
 		var queryString = $location.search();
 		if(queryString.startDt != null && queryString.endDt != null){
-			debug('In ReportCtrl, reading from query string: start date = '+queryString.startDt+', end date = '+queryString.endDt);
 			DateRange.setDates(queryString.startDt, queryString.endDt);
 		}
 		var startDt = DateRange.startDate;
 		var endDt = DateRange.endDate;
-		$scope.transactionsReport = {expenses:[], incomes:[]};
+
 		if(startDt != '' && endDt != ''){
 			$scope.transactionsReport = TransactionsReport.get({startDt: startDt, endDt: endDt});
 		}
@@ -17,32 +16,16 @@ reportControllers.controller('ReportCtrl', ['$scope', '$location', 'DateRange', 
 		$scope.expOrderToggle = false;
 		$scope.incOrderProp = 'amount';
 		$scope.incOrderToggle = false;		
-		$scope.showIncomes = true;
-		$scope.showExpenses = true;		
-		
+	
 		function clickOnEnter(event, func){
 			if(event.keyCode === 13){
 				func();
 			}
 		};
-		
 
-		
-		$scope.displayIncomes = function(){
-			$scope.showIncomes = !($scope.showIncomes);
-		};
-		
-		$scope.kDisplayIncomes = function(event){ 
-			clickOnEnter(event, $scope.displayIncomes); 			
+		$scope.kDisplayReports = function(event){ 
+			clickOnEnter(event, $scope.displayReports); 			
 		}
-		
-		$scope.displayExpenses = function(){
-			$scope.showExpenses = !($scope.showExpenses);
-		};
-
-		$scope.kDisplayExpenses = function(event){
-			clickOnEnter(event, $scope.displayExpenses);
-		};
 		
 		$scope.sortReportItemsBy = function(reportType, fieldName){
 			if(reportType == 'expenses'){
