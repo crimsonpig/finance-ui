@@ -6,7 +6,7 @@ financeApp.config(['$routeProvider', '$locationProvider', function($routeProvide
 			controller:'TransCtrl',
 			templateUrl:'partials/transactions.html'
 		})
-		.when('/reports', {
+		.when('/summary', {
 			controller:'ReportCtrl',
 			templateUrl:'partials/reports.html'
 		})
