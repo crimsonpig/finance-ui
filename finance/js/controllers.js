@@ -8,7 +8,6 @@ function debug(text){
 financeControllers.controller('SearchCtrl', ['$scope', '$location', 'DateRange', function($scope, $location, DateRange) {
 		$scope.viewTrans = false;
 		$scope.viewReport = false;
-		$scope.viewMonthly = false;
 
 		$scope.DateRange = DateRange;
 		$scope.search = function(startDate, endDate){			
@@ -23,12 +22,21 @@ financeControllers.controller('SearchCtrl', ['$scope', '$location', 'DateRange',
 				return "";
 			}
 		};
+		
+		$scope.setViewTrans = function(){
+			$scope.viewTrans = true;
+			$scope.viewReport = false;
+		};
+		
+		$scope.setViewReport = function(){
+			$scope.viewReport = true;
+			$scope.viewTrans = false;
+		};
 }]);
 
 financeControllers.controller('TransCtrl', ['$scope', '$location', 
 	'DateRange', 'Expenses', 'Incomes', 'Utils', 
 	function ($scope, $location, DateRange, Expenses, Incomes, Utils) {
-
 		var queryString = $location.search();
 		if(queryString.startDt == null && queryString.endDt == null){
 			$location.search({"startDt":DateRange.beginMonth, "endDt":DateRange.endMonth});
@@ -37,6 +45,7 @@ financeControllers.controller('TransCtrl', ['$scope', '$location',
 		if(queryString.startDt != null && queryString.endDt != null){
 			DateRange.setDates(queryString.startDt, queryString.endDt);
 		} 
+		$scope.setViewTrans();
 		
 		$scope.expOrderProp = 'tDate';
 		$scope.expOrderToggle = true;

@@ -7,6 +7,7 @@ reportControllers.controller('ReportCtrl', ['$scope', '$location', 'DateRange', 
 			debug('In ReportCtrl, reading from query string: start date = '+queryString.startDt+', end date = '+queryString.endDt);
 			DateRange.setDates(queryString.startDt, queryString.endDt);
 		}
+		$scope.setViewReport();
 		var startDt = DateRange.startDate;
 		var endDt = DateRange.endDate;
 		$scope.transactionsReport = {expenses:[], incomes:[]};

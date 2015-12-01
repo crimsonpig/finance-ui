@@ -65,7 +65,7 @@ label {
 	color: #239944;
 }
 
-a, a:visited {
+a, a:visited, a:hover, a:active, a:focus {
 	font-size: 14pt;
 	border: thin solid #EEEEEE;
 	text-decoration: none;
@@ -73,11 +73,15 @@ a, a:visited {
 	padding: 10px 20px;	
 	text-align: center;
 	margin: 0px 0px;	
+
+}
+
+.navlink-false {
 	background-color: #239944;
 	color: #EEEEEE;		
 }
 
-a:hover, a:active, a:focus {
+.navlink-true {
 	background-color: #EEEEEE;
 	color: #239944;	
 }
