@@ -29,22 +29,23 @@ financeControllers.controller('ReceiptCtrl', ['$scope', 'Utils',
 			
 			receiptItems.map(function(receiptItem){ 
 				if(receiptItem.category != ''){
+					var category = receiptItem.category.toUpperCase();
 					var amtToAdd = parseFloat(receiptItem.amount);
 					if(receiptItem.isTaxable){
-						if(taxableAmts[receiptItem.category] == null){
-							taxableAmts[receiptItem.category] = amtToAdd;
+						if(taxableAmts[category] == null){
+							taxableAmts[category] = amtToAdd;
 						}
 						else{
-							taxableAmts[receiptItem.category] += amtToAdd;
+							taxableAmts[category] += amtToAdd;
 						}
 						taxableSubtotal += amtToAdd; 
 					}
 					else{
-						if(nonTaxableAmts[receiptItem.category] == null){
-							nonTaxableAmts[receiptItem.category] = amtToAdd;
+						if(nonTaxableAmts[category] == null){
+							nonTaxableAmts[category] = amtToAdd;
 						}
 						else{
-							nonTaxableAmts[receiptItem.category] += amtToAdd;
+							nonTaxableAmts[category] += amtToAdd;
 						}
 					}
 					$scope.receiptItemsSubtotal += amtToAdd;
