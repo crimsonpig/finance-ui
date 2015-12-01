@@ -38,7 +38,7 @@
 				<td>{{transaction.tDate}}</td>
 				<td>{{transaction.category}}</td>
 				<td>{{transaction.amount.toFixed(2)}}</td>
-				<td ng-click="deleteIncome(transaction)">x</td>
+				<td ng-click="deleteIncome(transaction)" class="deleteButton">x</td>
 			</tr>
 		</tbody>
 	</table>
@@ -82,7 +82,7 @@
 				<td>{{transaction.tDate}}</td>
 				<td>{{transaction.category}}</td>
 				<td>{{transaction.amount.toFixed(2)}}</td>
-				<td ng-click="deleteExpense(transaction)">x</td>
+				<td ng-click="deleteExpense(transaction)" class="deleteButton">x</td>
 			</tr>
 		</tbody>
 	</table>

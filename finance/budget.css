@@ -240,6 +240,10 @@ h3 {
 	margin-bottom: 0.5%;
 }
 
+.deleteButton {
+	cursor: pointer;
+}
+
 footer {
 	clear: left;
 	font-style: italic;
