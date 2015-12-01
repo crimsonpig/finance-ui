@@ -242,6 +242,8 @@ h3 {
 
 .deleteButton {
 	cursor: pointer;
+	font-weight: bold;
+	color: #FF0000;
 }
 
 footer {
