@@ -110,6 +110,7 @@ financeControllers.controller('ReceiptCtrl', ['$scope', 'Utils',
 			$scope.checkSubtotal = 0.00;
 			$scope.checkTax = 0.00;
 			$scope.checkTotal = 0.00;
+			$scope.receiptDate = '';
 			Utils.focusOnButton("btnAddRpt");
 		}
 }]);
