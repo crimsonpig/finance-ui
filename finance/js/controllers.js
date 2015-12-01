@@ -187,7 +187,7 @@ financeControllers.controller('TransCtrl', ['$scope', '$location',
 			if(!Utils.isEmpty(transaction.category) && !Utils.isEmpty(transaction.tDate) && !Utils.isMalformedDate(transaction.tDate)){
 				var tToSave = new Object();
 				tToSave.tDate = transaction.tDate;
-				tToSave.category = transaction.category;
+				tToSave.category = transaction.category.toUpperCase();
 				tToSave.amount = parseFloat(transaction.amount);
 				var newT = saveService.save(tToSave, function(){
 					var tToDisplay = new Object();
