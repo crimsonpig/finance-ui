@@ -224,7 +224,7 @@ financeControllers.controller('TransCtrl', ['$scope', '$location',
 		$scope.getIncomeTotal = function(){
 				$scope.incTotal = 0.00;
 				angular.forEach($scope.incomes, function(income){ 
-					$scope.incTotal += parseFloat(income.amount);
+					$scope.incTotal += income.amount;
 				});
 				return $scope.incTotal.toFixed(2);
 		}
@@ -232,7 +232,7 @@ financeControllers.controller('TransCtrl', ['$scope', '$location',
 		$scope.getExpenseTotal = function(){
 				$scope.expTotal = 0.00;
 				angular.forEach($scope.expenses, function(expense){
-					$scope.expTotal += parseFloat(expense.amount);
+					$scope.expTotal += expense.amount;
 				});
 				return $scope.expTotal.toFixed(2);
 		}	
