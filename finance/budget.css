@@ -58,6 +58,7 @@ menu {
 	margin: 0px;
 	overflow: hidden;
 	background-color: #239944;	
+	border: thin solid #239944;
 }
 
 label {
