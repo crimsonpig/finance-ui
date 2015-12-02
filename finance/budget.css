@@ -142,32 +142,6 @@ h3 {
 	font-weight: bold;
 }
 
-.navButton-true {
-	text-align: center;
-	border: thin solid #239944;
-	border-radius: 8px;
-	padding: 0% 1%;
-	margin-top: 0.5%;
-	margin-left: 1.5%;
-	margin-right: 1.5%;
-	margin-bottom: 0%;
-	cursor: pointer;
-	background-color: #EEEEEE;
-}
-
-.navButton-false {
-	text-align: center;
-	border: thin solid #239944;
-	border-radius: 8px;
-	padding: 0% 1%;
-	margin-top: 0.5%;
-	margin-left: 1.5%;
-	margin-right: 1.5%;
-	margin-bottom: 0.5%;
-	cursor: pointer;
-	background-color: #FFFFFF;
-}
-
 #sctReceipt {
 	margin-left: 2%;
 	margin-right: 2%;
