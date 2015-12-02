@@ -14,7 +14,7 @@ table {
 
 th {
 	color: #EEEEEE;
-	background-color: #239944;
+	background-color: #649ff0;
 	border: thin solid black;
 	border-collapse: collapse;
 	padding: 4px;
@@ -57,13 +57,12 @@ menu {
 	padding: 0px;
 	margin: 0px;
 	overflow: hidden;
-	background-color: #239944;	
-	border: thin solid #239944;
+	background-color: #649ff0;	
+	border: thin solid #649ff0;
 }
 
 label {
 	font-weight: bold;
-	color: #239944;
 }
 
 a, a:visited, a:hover, a:active, a:focus {
@@ -78,13 +77,13 @@ a, a:visited, a:hover, a:active, a:focus {
 }
 
 .navlink-false {
-	background-color: #239944;
+	background-color: #649ff0;
 	color: #EEEEEE;		
 }
 
 .navlink-true {
 	background-color: #EEEEEE;
-	color: #239944;	
+	color: #649ff0;	
 }
 
 li {
@@ -101,7 +100,7 @@ h3 {
 
 .totalDisplay-true {
 	text-align: center;
-	border: thin solid #239944;
+	border: thin solid #649ff0;
 	border-radius: 8px;
 	padding: 0% 1%;
 	margin-top: 0.5%;
@@ -114,7 +113,7 @@ h3 {
 
 .totalDisplay-false {
 	text-align: center;
-	border: thin solid #239944;
+	border: thin solid #649ff0;
 	border-radius: 8px;
 	padding: 0% 1%;
 	margin-top: 0.5%;
@@ -127,7 +126,7 @@ h3 {
 
 .totalDisplay {
 	text-align: center;
-	border: thin solid #239944;
+	border: thin solid #649ff0;
 	border-radius: 8px;
 	padding: 0% 1%;
 	margin-top: 0.5%;
@@ -201,7 +200,7 @@ h3 {
 	margin-right: 1.5%;
 	margin-top: 0.5%;
 	margin-bottom: 0.5%;
-	border: thin solid #239944;
+	border: thin solid #649ff0;
 	border-radius: 8px;
 }
 
@@ -212,7 +211,7 @@ h3 {
 
 .sectionHeader-true {
 	cursor: pointer;
-	border-bottom: thin solid #239944;
+	border-bottom: thin solid #649ff0;
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
 	background-color: #EEEEEE;
@@ -231,7 +230,7 @@ h3 {
 footer {
 	clear: left;
 	font-style: italic;
-	border-top: thin solid #239944;
+	border-top: thin solid #649ff0;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
