@@ -138,16 +138,6 @@ h3 {
 	background-color: #FFFFFF;
 }
 
-#incomeDetails {
-	vertical-align: top;
-	display: inline-block;
-}
-
-#expenseDetails {
-	vertical-align: top;
-	display: inline-block;
-}
-
 .bold {
 	font-weight: bold;
 }
