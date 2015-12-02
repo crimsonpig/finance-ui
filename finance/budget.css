@@ -231,12 +231,7 @@ h3 {
 	text-transform: uppercase;
 }
 
-#sctExpenses {
-	text-align: center;
-	margin-bottom: 0.5%;
-}
-
-#sctIncomes {
+.section {
 	text-align: center;
 	margin-left: 1.5%;
 	margin-right: 1.5%;
@@ -246,7 +241,7 @@ h3 {
 	border-radius: 8px;
 }
 
-#sctIncomeDetails {
+.tableContainer {
 	margin-bottom: 0.5%;
 	margin-top: 0.25%;
 }
