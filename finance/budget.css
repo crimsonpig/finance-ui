@@ -238,7 +238,29 @@ h3 {
 
 #sctIncomes {
 	text-align: center;
+	margin-left: 1.5%;
+	margin-right: 1.5%;
+	margin-top: 0.5%;
 	margin-bottom: 0.5%;
+	border: thin solid #239944;
+	border-radius: 8px;
+}
+
+#sctIncomeDetails {
+	margin-bottom: 0.5%;
+	margin-top: 0.25%;
+}
+
+.sectionHeader-true {
+	cursor: pointer;
+	border-bottom: thin solid #239944;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	background-color: #EEEEEE;
+}
+
+.sectionHeader-false {
+	cursor: pointer;
 }
 
 .deleteButton {

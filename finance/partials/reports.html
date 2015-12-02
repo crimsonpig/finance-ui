@@ -1,20 +1,22 @@
 <h3 class="totalDisplay-false" id="netTotal">Net Total: {{transactionsReport.netTotal}}</h3>
-<h3 class="totalDisplay-{{showIncomes}}" ng-keypress="kDisplayIncomes($event)" ng-click="displayIncomes()">Incomes: {{transactionsReport.incomesTotal.toFixed(2)}}</h3>
-<div id="sctIncomes" ng-show="showIncomes">
-	<table>
-		<thead>
-			<tr>
-				<th ng-click="sortReportItemsBy('incomes','category')">Category</th>
-				<th ng-click="sortReportItemsBy('incomes','amount')">Amount</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="reportItem in transactionsReport.incomes | orderBy:incOrderProp:incOrderToggle">
-				<td>{{reportItem.category}}</td>
-				<td>{{reportItem.amount.toFixed(2)}}</td>
-			</tr>			
-		</tbody>
-	</table>
+<div id="sctIncomes" ng-keypress="kDisplayIncomes($event)" ng-click="displayIncomes()">
+	<h3 class="sectionHeader-{{showIncomes}}">Incomes: {{transactionsReport.incomesTotal.toFixed(2)}}</h3>
+	<div id="sctIncomeDetails" ng-show="showIncomes">
+		<table>
+			<thead>
+				<tr>
+					<th ng-click="sortReportItemsBy('incomes','category')">Category</th>
+					<th ng-click="sortReportItemsBy('incomes','amount')">Amount</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="reportItem in transactionsReport.incomes | orderBy:incOrderProp:incOrderToggle">
+					<td>{{reportItem.category}}</td>
+					<td>{{reportItem.amount.toFixed(2)}}</td>
+				</tr>			
+			</tbody>
+		</table>
+	</div>
 </div>
 <h3 class="totalDisplay-{{showExpenses}}" ng-keypress="kDisplayExpenses($event)" ng-click="displayExpenses()">Expenses: {{transactionsReport.expensesTotal.toFixed(2)}}</h3>
 <div id="sctExpenses" ng-show="showExpenses">
