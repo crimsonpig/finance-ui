@@ -31,17 +31,17 @@ financeServices.service('DateRange', function(){
 
 financeServices.factory('Expenses', ['$resource',
 	function($resource){
-		return $resource('http://localhost:9068/transactions/expenses/:id');
+		return $resource('http://linuxbox/transactions/expenses/:id');
 }]);
 
 financeServices.factory('Incomes', ['$resource',
 	function($resource){
-		return $resource('http://localhost:9068/transactions/incomes/:id');
+		return $resource('http://linuxbox/transactions/incomes/:id');
 }]);
 
 financeServices.factory('TransactionsReport', ['$resource',
 	function($resource){
-		return $resource('http://localhost:9069/reports/transactions');
+		return $resource('http://linuxbox/reports/transactions');
 }]);
 
 financeServices.service('Utils', function(){
