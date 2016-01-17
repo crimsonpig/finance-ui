@@ -6,10 +6,10 @@
 		<table id="tblIncTrans">
 			<thead>
 				<tr>
-					<th ng-click="sortItemsBy('incomeItems','startDate')">Start Date</th>
-					<th ng-click="sortItemsBy('incomeItems','endDate')">End Date</th>					
-					<th ng-click="sortItemsBy('incomeItems','category')">Category</th>
-					<th ng-click="sortItemsBy('incomeItems','amount')">Amount</th>
+					<th ng-click="sortItemsBy('incomes','startDate')">Start Date</th>
+					<th ng-click="sortItemsBy('incomes','endDate')">End Date</th>					
+					<th ng-click="sortItemsBy('incomes','category')">Category</th>
+					<th ng-click="sortItemsBy('incomes','amount')">Amount</th>
 					<th>
 						<button type="button" ng-click="saveAllIncomeRows()" ng-show="hasInputRows(incomeItemsToAdd)">Save All</button>
 						<button type="button" ng-click="clearAllIncomeInputs()" ng-show="hasInputRows(incomeItemsToAdd)">Cancel All</button>
@@ -59,10 +59,10 @@
 		<table id="tblExpTrans">
 			<thead>
 				<tr>
-					<th ng-click="sortItemsBy('expenseItems','startDate')">Start Date</th>
-					<th ng-click="sortItemsBy('expenseItems','endDate')">End Date</th>		
-					<th ng-click="sortItemsBy('expenseItems','category')">Category</th>
-					<th ng-click="sortItemsBy('expenseItems','amount')">Amount</th>
+					<th ng-click="sortItemsBy('expenses','startDate')">Start Date</th>
+					<th ng-click="sortItemsBy('expenses','endDate')">End Date</th>		
+					<th ng-click="sortItemsBy('expenses','category')">Category</th>
+					<th ng-click="sortItemsBy('expenses','amount')">Amount</th>
 					<th>
 						<button type="button" ng-click="saveAllExpenseRows()" ng-show="hasInputRows(expenseItemsToAdd)" id="btnSaveAllExp">Save All</button>
 						<button type="button" ng-click="clearAllExpenseInputs()" ng-show="hasInputRows(expenseItemsToAdd)">Cancel All</button>

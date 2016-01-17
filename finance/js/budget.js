@@ -16,7 +16,7 @@ budgetControllers.controller('BudgetCtrl', ['$scope', '$location',
 		
 		$scope.expOrderProp = 'startDate';
 		$scope.expOrderToggle = true;
-		$scope.incOrderProp = 'endDate';
+		$scope.incOrderProp = 'startDate';
 		$scope.incOrderToggle = true;
 		$scope.expItemsTotal = 0.00;
 		$scope.incItemsTotal = 0.00;
