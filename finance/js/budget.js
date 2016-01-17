@@ -14,9 +14,9 @@ budgetControllers.controller('BudgetCtrl', ['$scope', '$location',
 		} 
 		$scope.setViewBudget();
 		
-		$scope.expOrderProp = 'tDate';
+		$scope.expOrderProp = 'startDate';
 		$scope.expOrderToggle = true;
-		$scope.incOrderProp = 'tDate';
+		$scope.incOrderProp = 'endDate';
 		$scope.incOrderToggle = true;
 		$scope.expItemsTotal = 0.00;
 		$scope.incItemsTotal = 0.00;
@@ -156,7 +156,7 @@ budgetControllers.controller('BudgetCtrl', ['$scope', '$location',
 				itemToSave.amount = parseFloat(budgetItem.amount);
 				var newT = saveService.save(itemToSave, function(){
 					var itemToDisplay = new Object();
-					itemToDisplay.tid = newT.tid;
+					itemToDisplay.id = newT.id;
 					itemToDisplay.startDate = newT.startDate;
 					itemToDisplay.endDate = newT.endDate;					
 					itemToDisplay.category = newT.category;
@@ -173,7 +173,7 @@ budgetControllers.controller('BudgetCtrl', ['$scope', '$location',
 			
 		$scope.deleteExpense = function(expense){
 			if(confirm('Are you sure you want to delete this budget item?')){
-				Expenses.delete({id:expense.tid});
+				ExpenseItems.delete({id:expense.id});
 				var idx = $scope.expenseItems.indexOf(expense);
 				$scope.expenseItems.splice(idx,1);
 			}
@@ -181,7 +181,7 @@ budgetControllers.controller('BudgetCtrl', ['$scope', '$location',
 
 		$scope.deleteIncome = function(income){
 			if(confirm('Are you sure you want to delete this budget item?')){
-				Incomes.delete({id:income.tid});
+				IncomeItems.delete({id:income.id});
 				var idx = $scope.incomeItems.indexOf(income);
 				$scope.incomeItems.splice(idx,1);
 			}
