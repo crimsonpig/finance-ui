@@ -8,6 +8,7 @@ function debug(text){
 financeControllers.controller('SearchCtrl', ['$scope', '$location', 'DateRange', function($scope, $location, DateRange) {
 		$scope.viewTrans = false;
 		$scope.viewReport = false;
+		$scope.viewBudget = false;
 
 		$scope.DateRange = DateRange;
 		$scope.search = function(startDate, endDate){			
@@ -26,12 +27,20 @@ financeControllers.controller('SearchCtrl', ['$scope', '$location', 'DateRange',
 		$scope.setViewTrans = function(){
 			$scope.viewTrans = true;
 			$scope.viewReport = false;
+			$scope.viewBudget = false;			
 		};
 		
 		$scope.setViewReport = function(){
 			$scope.viewReport = true;
 			$scope.viewTrans = false;
+			$scope.viewBudget = false;			
 		};
+		
+		$scope.setViewBudget = function(){
+			$scope.viewBudget = true;
+			$scope.viewReport = false;
+			$scope.viewTrans = false;
+		};		
 }]);
 
 financeControllers.controller('TransCtrl', ['$scope', '$location', 

@@ -39,6 +39,16 @@ financeServices.factory('Incomes', ['$resource',
 		return $resource('http://linuxbox/transactions/incomes/:id');
 }]);
 
+financeServices.factory('ExpenseItems', ['$resource',
+	function($resource){
+		return $resource('http://linuxbox/budget/expenses/:id');
+}]);
+
+financeServices.factory('IncomeItems', ['$resource',
+	function($resource){
+		return $resource('http://linuxbox/budget/incomes/:id');
+}]);
+
 financeServices.factory('TransactionsReport', ['$resource',
 	function($resource){
 		return $resource('http://linuxbox/reports/transactions');
