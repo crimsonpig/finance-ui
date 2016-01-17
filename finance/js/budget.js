@@ -14,10 +14,10 @@ budgetControllers.controller('BudgetCtrl', ['$scope', '$location',
 		} 
 		$scope.setViewBudget();
 		
-		$scope.expOrderProp = 'startDate';
-		$scope.expOrderToggle = true;
+		$scope.expOrderProp = 'category';
+		$scope.expOrderToggle = false;
 		$scope.incOrderProp = 'startDate';
-		$scope.incOrderToggle = true;
+		$scope.incOrderToggle = false;
 		$scope.expItemsTotal = 0.00;
 		$scope.incItemsTotal = 0.00;
 		$scope.showIncomes = true;
