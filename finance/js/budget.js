@@ -15,16 +15,16 @@ budgetControllers.controller('BudgetCtrl', ['$scope',
 		$scope.showIncomes = true;
 		$scope.showExpenses = true;
 
-		var startDt = SearchCriteria.startDate;
-		var endDt = SearchCriteria.endDate;
-		if(startDt != '' && endDt != ''){
-			$scope.expenseItems = ExpenseItems.query({startDt: startDt, endDt: endDt});
-			$scope.incomeItems = IncomeItems.query({startDt: startDt, endDt: endDt});
-
-		}else{
+		function reloadBudgetsCallback(startDate, endDate){
 			$scope.expenseItems = [];
 			$scope.incomeItems = [];
-		}
+			if(startDate != '' && endDate != ''){
+				$scope.expenseItems = ExpenseItems.query({startDt: startDate, endDt: endDate});
+				$scope.incomeItems = IncomeItems.query({startDt: startDate, endDt: endDate});
+			}						
+		};
+		SearchCriteria.subscribeObserver(reloadBudgetsCallback);
+		reloadBudgetsCallback(SearchCriteria.firstDayOfMonth(), SearchCriteria.lastDayOfMonth());
 
 		function clickOnEnter(event, func){
 			if(event.keyCode === 13){

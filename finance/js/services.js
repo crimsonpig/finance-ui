@@ -1,37 +1,57 @@
 var financeServices = angular.module('financeServices', ['ngResource']);
 
 financeServices.factory('SearchCriteria', function(){
+
+	var observers = [];
+	
+	function subscribeObserver(callback){
+		observers.push(callback);
+	};
+	
+	function notifyObservers(startDate, endDate){
+		observers.map(function(callback){
+			callback(startDate, endDate);
+		});
+	};
+
+	var today = new Date();
+	var year = today.getFullYear();
+	var month = today.getMonth();
 	
 	function padZeros(field){
 		field = field + '';
 		return field.length < 2 ? '0' + field : field;
-	}	
-
+	};
+	
 	function formatDate(date){
 		return date.getFullYear() + '-' + 
 			padZeros(date.getMonth()+1) + '-' + 
 			padZeros(date.getDate());
-	}
+	};
 	
-	var today = new Date();
-	var year = today.getFullYear();
-	var month = today.getMonth();
-
 	var beginMonth = formatDate(new Date(year, month, 1));
 	var endMonth = formatDate(new Date(year, month+1, 0));
-		
-	var startDate = beginMonth;
-	var endDate = endMonth;
+
+	function firstDayOfMonth(){
+		return beginMonth;
+	};
+	
+	function lastDayOfMonth(){
+		return endMonth;
+	};
+	
 	function setDates(startDt, endDt){
-		startDate = startDt;
-		endDate = endDt;
+		//startDate = startDt;
+		//endDate = endDt;
+		notifyObservers(startDt, endDt);
 		//alert('in DatePickerService. Start Date is now set to: '+startDate+' and End Date is now set to: '+endDate);
-	}
+	};
 	
 	return {
-		startDate: startDate, 
-		endDate: endDate,
-		setDates: setDates
+		firstDayOfMonth: firstDayOfMonth, 
+		lastDayOfMonth: lastDayOfMonth,
+		setDates: setDates, 
+		subscribeObserver: subscribeObserver
 	}
 });
 
