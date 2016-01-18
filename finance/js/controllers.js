@@ -62,7 +62,7 @@ financeControllers.controller('TransCtrl', ['$scope',
 			}						
 		};
 		SearchCriteria.subscribeObserver(reloadTransactionsCallback);
-		reloadTransactionsCallback(SearchCriteria.firstDayOfMonth(), SearchCriteria.lastDayOfMonth());
+		reloadTransactionsCallback(SearchCriteria.startDate, SearchCriteria.endDate);
 
 		function clickOnEnter(event, func){
 			if(event.keyCode === 13){

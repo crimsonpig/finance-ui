@@ -32,6 +32,9 @@ financeServices.factory('SearchCriteria', function(){
 	var beginMonth = formatDate(new Date(year, month, 1));
 	var endMonth = formatDate(new Date(year, month+1, 0));
 
+	var startDate = beginMonth;
+	var endDate = endMonth;
+	
 	function firstDayOfMonth(){
 		return beginMonth;
 	};
@@ -39,17 +42,19 @@ financeServices.factory('SearchCriteria', function(){
 	function lastDayOfMonth(){
 		return endMonth;
 	};
-	
+
 	function setDates(startDt, endDt){
-		//startDate = startDt;
-		//endDate = endDt;
+		this.startDate = startDt;
+		this.endDate = endDt;
 		notifyObservers(startDt, endDt);
-		//alert('in DatePickerService. Start Date is now set to: '+startDate+' and End Date is now set to: '+endDate);
+		//alert('in DatePickerService. Start Date is now set to: '+this.startDate+' and End Date is now set to: '+this.endDate);
 	};
 	
 	return {
 		firstDayOfMonth: firstDayOfMonth, 
 		lastDayOfMonth: lastDayOfMonth,
+		startDate: startDate,
+		endDate: endDate,
 		setDates: setDates, 
 		subscribeObserver: subscribeObserver
 	}

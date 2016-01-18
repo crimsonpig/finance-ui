@@ -13,8 +13,8 @@ reportControllers.controller('ReportCtrl', ['$scope', 'SearchCriteria', 'Transac
 		};
 		
 		SearchCriteria.subscribeObserver(reloadReportCallback);
-		
-		reloadReportCallback(SearchCriteria.firstDayOfMonth(), SearchCriteria.lastDayOfMonth());
+
+		reloadReportCallback(SearchCriteria.startDate, SearchCriteria.endDate);
 		
 		$scope.expOrderProp = 'category';
 		$scope.expOrderToggle = false;

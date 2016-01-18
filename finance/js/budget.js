@@ -24,7 +24,7 @@ budgetControllers.controller('BudgetCtrl', ['$scope',
 			}						
 		};
 		SearchCriteria.subscribeObserver(reloadBudgetsCallback);
-		reloadBudgetsCallback(SearchCriteria.firstDayOfMonth(), SearchCriteria.lastDayOfMonth());
+		reloadBudgetsCallback(SearchCriteria.startDate, SearchCriteria.endDate);
 
 		function clickOnEnter(event, func){
 			if(event.keyCode === 13){
