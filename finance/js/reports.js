@@ -5,16 +5,20 @@ reportControllers.controller('ReportCtrl', ['$scope', 'SearchCriteria', 'Transac
 
 		$scope.setViewReport();
 				
-		function reloadReportCallback(startDate, endDate){
+		function reloadReportCallback(startDate, endDate, category){
 			$scope.transactionsReport = {expenses:[], incomes:[]};
 			if(startDate != '' && endDate != ''){
-				$scope.transactionsReport = TransactionsReport.get({startDt: startDate, endDt: endDate});
+				var searchCriteria = {startDt: startDate, endDt: endDate};
+				if(category != ''){
+					searchCriteria.category = category;
+				}
+				$scope.transactionsReport = TransactionsReport.get(searchCriteria);
 			}			
 		};
 		
 		SearchCriteria.subscribeObserver(reloadReportCallback);
 
-		reloadReportCallback(SearchCriteria.startDate, SearchCriteria.endDate);
+		reloadReportCallback(SearchCriteria.startDate, SearchCriteria.endDate, SearchCriteria.category);
 		
 		$scope.expOrderProp = 'category';
 		$scope.expOrderToggle = false;

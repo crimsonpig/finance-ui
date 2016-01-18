@@ -42,6 +42,10 @@ h1 {
 	text-align: center;
 }
 
+#iptCat {
+	text-transform: uppercase;
+}
+
 header {
 	padding: 0px;
 	width: auto;

@@ -12,8 +12,8 @@ financeControllers.controller('SearchCtrl', ['$scope', 'SearchCriteria', functio
 
 		$scope.startDate = SearchCriteria.firstDayOfMonth();
 		$scope.endDate = SearchCriteria.lastDayOfMonth();
-		$scope.search = function(startDate, endDate){			
-			SearchCriteria.setDates(startDate, endDate);
+		$scope.search = function(startDate, endDate, category){			
+			SearchCriteria.search(startDate, endDate, category);
 		};
 
 		$scope.setViewTrans = function(){
@@ -53,16 +53,20 @@ financeControllers.controller('TransCtrl', ['$scope',
 			$scope.showReceipts = !($scope.showReceipts);
 		};
 
-		function reloadTransactionsCallback(startDate, endDate){
+		function reloadTransactionsCallback(startDate, endDate, category){
 			$scope.expenses = [];
 			$scope.incomes = [];
 			if(startDate != '' && endDate != ''){
-				$scope.expenses = Expenses.query({startDt: startDate, endDt: endDate});
-				$scope.incomes = Incomes.query({startDt: startDate, endDt: endDate});
+				var searchCriteria = {startDt: startDate, endDt: endDate};
+				if(category != ''){
+					searchCriteria.category = category;
+				}
+				$scope.expenses = Expenses.query(searchCriteria);
+				$scope.incomes = Incomes.query(searchCriteria);
 			}						
 		};
 		SearchCriteria.subscribeObserver(reloadTransactionsCallback);
-		reloadTransactionsCallback(SearchCriteria.startDate, SearchCriteria.endDate);
+		reloadTransactionsCallback(SearchCriteria.startDate, SearchCriteria.endDate, SearchCriteria.category);
 
 		function clickOnEnter(event, func){
 			if(event.keyCode === 13){

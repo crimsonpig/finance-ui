@@ -8,9 +8,9 @@ financeServices.factory('SearchCriteria', function(){
 		observers.push(callback);
 	};
 	
-	function notifyObservers(startDate, endDate){
+	function notifyObservers(startDate, endDate, category){
 		observers.map(function(callback){
-			callback(startDate, endDate);
+			callback(startDate, endDate, category);
 		});
 	};
 
@@ -34,6 +34,7 @@ financeServices.factory('SearchCriteria', function(){
 
 	var startDate = beginMonth;
 	var endDate = endMonth;
+	var category = '';
 	
 	function firstDayOfMonth(){
 		return beginMonth;
@@ -43,10 +44,11 @@ financeServices.factory('SearchCriteria', function(){
 		return endMonth;
 	};
 
-	function setDates(startDt, endDt){
+	function search(startDt, endDt, category){
 		this.startDate = startDt;
 		this.endDate = endDt;
-		notifyObservers(startDt, endDt);
+		this.category = category;
+		notifyObservers(startDt, endDt, category);
 		//alert('in DatePickerService. Start Date is now set to: '+this.startDate+' and End Date is now set to: '+this.endDate);
 	};
 	
@@ -55,7 +57,8 @@ financeServices.factory('SearchCriteria', function(){
 		lastDayOfMonth: lastDayOfMonth,
 		startDate: startDate,
 		endDate: endDate,
-		setDates: setDates, 
+		category: category, 
+		search: search, 
 		subscribeObserver: subscribeObserver
 	}
 });
