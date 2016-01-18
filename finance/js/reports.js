@@ -1,11 +1,11 @@
 var reportControllers = angular.module('reportControllers', []); 
 
-reportControllers.controller('ReportCtrl', ['$scope', 'DateRange', 'TransactionsReport', 
-	function($scope, DateRange, TransactionsReport) {
+reportControllers.controller('ReportCtrl', ['$scope', 'SearchCriteria', 'TransactionsReport', 
+	function($scope, SearchCriteria, TransactionsReport) {
 
 		$scope.setViewReport();
-		var startDt = DateRange.startDate;
-		var endDt = DateRange.endDate;
+		var startDt = SearchCriteria.startDate;
+		var endDt = SearchCriteria.endDate;
 		$scope.transactionsReport = {expenses:[], incomes:[]};
 		if(startDt != '' && endDt != ''){
 			$scope.transactionsReport = TransactionsReport.get({startDt: startDt, endDt: endDt});

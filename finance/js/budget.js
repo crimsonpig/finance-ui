@@ -2,8 +2,8 @@ var budgetControllers = angular.module('budgetControllers', []);
 
 
 budgetControllers.controller('BudgetCtrl', ['$scope', 
-	'DateRange', 'ExpenseItems', 'IncomeItems', 'Utils', 
-	function ($scope, DateRange, ExpenseItems, IncomeItems, Utils) {
+	'SearchCriteria', 'ExpenseItems', 'IncomeItems', 'Utils', 
+	function ($scope, SearchCriteria, ExpenseItems, IncomeItems, Utils) {
 		$scope.setViewBudget();
 		
 		$scope.expOrderProp = 'category';
@@ -15,8 +15,8 @@ budgetControllers.controller('BudgetCtrl', ['$scope',
 		$scope.showIncomes = true;
 		$scope.showExpenses = true;
 
-		var startDt = DateRange.startDate;
-		var endDt = DateRange.endDate;
+		var startDt = SearchCriteria.startDate;
+		var endDt = SearchCriteria.endDate;
 		if(startDt != '' && endDt != ''){
 			$scope.expenseItems = ExpenseItems.query({startDt: startDt, endDt: endDt});
 			$scope.incomeItems = IncomeItems.query({startDt: startDt, endDt: endDt});

@@ -1,6 +1,6 @@
 var financeServices = angular.module('financeServices', ['ngResource']);
 
-financeServices.service('DateRange', function(){
+financeServices.factory('SearchCriteria', function(){
 	
 	function padZeros(field){
 		field = field + '';
@@ -17,15 +17,21 @@ financeServices.service('DateRange', function(){
 	var year = today.getFullYear();
 	var month = today.getMonth();
 
-	this.beginMonth = formatDate(new Date(year, month, 1));
-	this.endMonth = formatDate(new Date(year, month+1, 0));
+	var beginMonth = formatDate(new Date(year, month, 1));
+	var endMonth = formatDate(new Date(year, month+1, 0));
 		
-	this.startDate = this.beginMonth;
-	this.endDate = this.endMonth;
-	this.setDates = function(startDt, endDt){
-		this.startDate = startDt;
-		this.endDate = endDt;
-		//alert('in DatePickerService. Start Date is now set to: '+this.startDate+' and End Date is now set to: '+this.endDate);
+	var startDate = beginMonth;
+	var endDate = endMonth;
+	function setDates(startDt, endDt){
+		startDate = startDt;
+		endDate = endDt;
+		//alert('in DatePickerService. Start Date is now set to: '+startDate+' and End Date is now set to: '+endDate);
+	}
+	
+	return {
+		startDate: startDate, 
+		endDate: endDate,
+		setDates: setDates
 	}
 });
 

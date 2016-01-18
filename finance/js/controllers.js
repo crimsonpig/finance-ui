@@ -5,15 +5,15 @@ function debug(text){
 		console.log(text);
 }
 
-financeControllers.controller('SearchCtrl', ['$scope', 'DateRange', function($scope, DateRange) {
+financeControllers.controller('SearchCtrl', ['$scope', 'SearchCriteria', function($scope, SearchCriteria) {
 		$scope.viewTrans = false;
 		$scope.viewReport = false;
 		$scope.viewBudget = false;
 
-		$scope.startDate = DateRange.startDate;
-		$scope.endDate = DateRange.endDate;
+		$scope.startDate = SearchCriteria.startDate;
+		$scope.endDate = SearchCriteria.endDate;
 		$scope.search = function(startDate, endDate){			
-			DateRange.setDates(startDate, endDate);
+			SearchCriteria.setDates(startDate, endDate);
 		};
 
 		$scope.setViewTrans = function(){
@@ -36,8 +36,8 @@ financeControllers.controller('SearchCtrl', ['$scope', 'DateRange', function($sc
 }]);
 
 financeControllers.controller('TransCtrl', ['$scope', 
-	'DateRange', 'Expenses', 'Incomes', 'Utils', 
-	function ($scope, DateRange, Expenses, Incomes, Utils) {
+	'SearchCriteria', 'Expenses', 'Incomes', 'Utils', 
+	function ($scope, SearchCriteria, Expenses, Incomes, Utils) {
 		$scope.setViewTrans();
 		
 		$scope.expOrderProp = 'tDate';
@@ -53,8 +53,8 @@ financeControllers.controller('TransCtrl', ['$scope',
 			$scope.showReceipts = !($scope.showReceipts);
 		};
 				
-		var startDt = DateRange.startDate;
-		var endDt = DateRange.endDate;
+		var startDt = SearchCriteria.startDate;
+		var endDt = SearchCriteria.endDate;
 		if(startDt != '' && endDt != ''){
 			$scope.expenses = Expenses.query({startDt: startDt, endDt: endDt});
 			$scope.incomes = Incomes.query({startDt: startDt, endDt: endDt});
