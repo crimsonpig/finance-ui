@@ -5,25 +5,17 @@ function debug(text){
 		console.log(text);
 }
 
-financeControllers.controller('SearchCtrl', ['$scope', '$location', 'DateRange', function($scope, $location, DateRange) {
+financeControllers.controller('SearchCtrl', ['$scope', 'DateRange', function($scope, DateRange) {
 		$scope.viewTrans = false;
 		$scope.viewReport = false;
 		$scope.viewBudget = false;
 
-		$scope.DateRange = DateRange;
+		$scope.startDate = DateRange.startDate;
+		$scope.endDate = DateRange.endDate;
 		$scope.search = function(startDate, endDate){			
-			$location.search({"startDt":startDate, "endDt":endDate});
+			DateRange.setDates(startDate, endDate);
 		};
-		
-		$scope.getQueryString = function(){
-			var queryString = $location.search();
-			if(queryString.startDt != null && queryString.endDt != null){
-				return "?startDt="+queryString.startDt+"&endDt="+queryString.endDt;
-			}else{
-				return "";
-			}
-		};
-		
+
 		$scope.setViewTrans = function(){
 			$scope.viewTrans = true;
 			$scope.viewReport = false;
@@ -43,17 +35,9 @@ financeControllers.controller('SearchCtrl', ['$scope', '$location', 'DateRange',
 		};		
 }]);
 
-financeControllers.controller('TransCtrl', ['$scope', '$location', 
+financeControllers.controller('TransCtrl', ['$scope', 
 	'DateRange', 'Expenses', 'Incomes', 'Utils', 
-	function ($scope, $location, DateRange, Expenses, Incomes, Utils) {
-		var queryString = $location.search();
-		if(queryString.startDt == null && queryString.endDt == null){
-			$location.search({"startDt":DateRange.beginMonth, "endDt":DateRange.endMonth});
-		}
-		
-		if(queryString.startDt != null && queryString.endDt != null){
-			DateRange.setDates(queryString.startDt, queryString.endDt);
-		} 
+	function ($scope, DateRange, Expenses, Incomes, Utils) {
 		$scope.setViewTrans();
 		
 		$scope.expOrderProp = 'tDate';

@@ -1,12 +1,8 @@
 var reportControllers = angular.module('reportControllers', []); 
 
-reportControllers.controller('ReportCtrl', ['$scope', '$location', 'DateRange', 'TransactionsReport', 
-	function($scope, $location, DateRange, TransactionsReport) {
-		var queryString = $location.search();
-		if(queryString.startDt != null && queryString.endDt != null){
-			debug('In ReportCtrl, reading from query string: start date = '+queryString.startDt+', end date = '+queryString.endDt);
-			DateRange.setDates(queryString.startDt, queryString.endDt);
-		}
+reportControllers.controller('ReportCtrl', ['$scope', 'DateRange', 'TransactionsReport', 
+	function($scope, DateRange, TransactionsReport) {
+
 		$scope.setViewReport();
 		var startDt = DateRange.startDate;
 		var endDt = DateRange.endDate;

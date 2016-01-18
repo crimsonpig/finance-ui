@@ -1,17 +1,9 @@
 var budgetControllers = angular.module('budgetControllers', []); 
 
 
-budgetControllers.controller('BudgetCtrl', ['$scope', '$location', 
+budgetControllers.controller('BudgetCtrl', ['$scope', 
 	'DateRange', 'ExpenseItems', 'IncomeItems', 'Utils', 
-	function ($scope, $location, DateRange, ExpenseItems, IncomeItems, Utils) {
-		var queryString = $location.search();
-		if(queryString.startDt == null && queryString.endDt == null){
-			$location.search({"startDt":DateRange.beginMonth, "endDt":DateRange.endMonth});
-		}
-		
-		if(queryString.startDt != null && queryString.endDt != null){
-			DateRange.setDates(queryString.startDt, queryString.endDt);
-		} 
+	function ($scope, DateRange, ExpenseItems, IncomeItems, Utils) {
 		$scope.setViewBudget();
 		
 		$scope.expOrderProp = 'category';
