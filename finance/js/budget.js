@@ -2,8 +2,8 @@ var budgetControllers = angular.module('budgetControllers', []);
 
 
 budgetControllers.controller('BudgetCtrl', ['$scope', 
-	'SearchCriteria', 'ExpenseItems', 'IncomeItems', 'Utils', 
-	function ($scope, SearchCriteria, ExpenseItems, IncomeItems, Utils) {
+	'SearchCriteria', 'BudgetItems', 'Utils', 
+	function ($scope, SearchCriteria, BudgetItems, Utils) {
 		$scope.setViewBudget();
 		
 		$scope.expOrderProp = 'category';
@@ -15,6 +15,14 @@ budgetControllers.controller('BudgetCtrl', ['$scope',
 		$scope.showIncomes = true;
 		$scope.showExpenses = true;
 
+		function filterExpenses(budgetItem){
+			return budgetItem.itemType == 'E'
+		}
+		
+		function filterIncomes(budgetItem){
+			return budgetItem.itemType == 'I'
+		}
+
 		function reloadBudgetsCallback(startDate, endDate, category){
 			$scope.expenseItems = [];
 			$scope.incomeItems = [];
@@ -23,8 +31,11 @@ budgetControllers.controller('BudgetCtrl', ['$scope',
 				if(category != ''){
 					searchCriteria.category = category;
 				}
-				$scope.expenseItems = ExpenseItems.query(searchCriteria);
-				$scope.incomeItems = IncomeItems.query(searchCriteria);
+				var budgetItems = BudgetItems.query(searchCriteria, function(){
+					$scope.expenseItems = budgetItems.filter(filterExpenses)
+					$scope.incomeItems = budgetItems.filter(filterIncomes)
+				});
+
 			}						
 		};
 		SearchCriteria.subscribeObserver(reloadBudgetsCallback);
@@ -135,22 +146,23 @@ budgetControllers.controller('BudgetCtrl', ['$scope',
 		}
 
 		function validateAndPersistExpense(expense){
-			validateAndPersistTransaction(expense, ExpenseItems, $scope.expenseItems, $scope.expenseItemsToAdd);
+			validateAndPersistTransaction(expense, "E", $scope.expenseItems, $scope.expenseItemsToAdd);
 		}
 		
 		function validateAndPersistIncome(income){
-			validateAndPersistTransaction(income, IncomeItems, $scope.incomeItems, $scope.incomeItemsToAdd);
+			validateAndPersistTransaction(income, "I", $scope.incomeItems, $scope.incomeItemsToAdd);
 		}
 		
-		function validateAndPersistTransaction(budgetItem, saveService, postSaveList, inputList){
+		function validateAndPersistTransaction(budgetItem, itemType, postSaveList, inputList){
 			if(!Utils.isEmpty(budgetItem.category) && !Utils.isEmpty(budgetItem.startDate) && !Utils.isMalformedDate(budgetItem.startDate)
 				&& !Utils.isEmpty(budgetItem.endDate) && !Utils.isMalformedDate(budgetItem.endDate)){
 				var itemToSave = new Object();
 				itemToSave.startDate = budgetItem.startDate;
 				itemToSave.endDate = budgetItem.endDate;				
+				itemToSave.itemType = itemType.toUpperCase();
 				itemToSave.category = budgetItem.category.toUpperCase();
 				itemToSave.amount = parseFloat(budgetItem.amount);
-				var newT = saveService.save(itemToSave, function(){
+				var newT = BudgetItems.save(itemToSave, function(){
 					var itemToDisplay = new Object();
 					itemToDisplay.id = newT.id;
 					itemToDisplay.startDate = newT.startDate;
@@ -169,7 +181,7 @@ budgetControllers.controller('BudgetCtrl', ['$scope',
 			
 		$scope.deleteExpense = function(expense){
 			if(confirm('Are you sure you want to delete this budget item?')){
-				ExpenseItems.delete({id:expense.id});
+				BudgetItems.delete({id:expense.id});
 				var idx = $scope.expenseItems.indexOf(expense);
 				$scope.expenseItems.splice(idx,1);
 			}
@@ -177,7 +189,7 @@ budgetControllers.controller('BudgetCtrl', ['$scope',
 
 		$scope.deleteIncome = function(income){
 			if(confirm('Are you sure you want to delete this budget item?')){
-				IncomeItems.delete({id:income.id});
+				BudgetItems.delete({id:income.id});
 				var idx = $scope.incomeItems.indexOf(income);
 				$scope.incomeItems.splice(idx,1);
 			}
