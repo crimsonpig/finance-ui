@@ -166,7 +166,8 @@ budgetControllers.controller('BudgetCtrl', ['$scope',
 					var itemToDisplay = new Object();
 					itemToDisplay.id = newT.id;
 					itemToDisplay.startDate = newT.startDate;
-					itemToDisplay.endDate = newT.endDate;					
+					itemToDisplay.endDate = newT.endDate;		
+					itemToDisplay.itemType = newT.itemType;			
 					itemToDisplay.category = newT.category;
 					itemToDisplay.amount = parseFloat(newT.amount.toFixed(2));
 					postSaveList.push(itemToDisplay);

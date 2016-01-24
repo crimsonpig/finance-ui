@@ -36,8 +36,8 @@ financeControllers.controller('SearchCtrl', ['$scope', 'SearchCriteria', functio
 }]);
 
 financeControllers.controller('TransCtrl', ['$scope', 
-	'SearchCriteria', 'Expenses', 'Incomes', 'Utils', 
-	function ($scope, SearchCriteria, Expenses, Incomes, Utils) {
+	'SearchCriteria', 'Transactions', 'Utils', 
+	function ($scope, SearchCriteria, Transactions, Utils) {
 		$scope.setViewTrans();
 		
 		$scope.expOrderProp = 'tDate';
@@ -52,6 +52,14 @@ financeControllers.controller('TransCtrl', ['$scope',
 		$scope.displayReceipts = function(){
 			$scope.showReceipts = !($scope.showReceipts);
 		};
+		
+		function filterExpenses(transaction){
+			return transaction.tType == 'E'
+		}
+		
+		function filterIncomes(transaction){
+			return transaction.tType == 'I'
+		}
 
 		function reloadTransactionsCallback(startDate, endDate, category){
 			$scope.expenses = [];
@@ -61,8 +69,11 @@ financeControllers.controller('TransCtrl', ['$scope',
 				if(category != ''){
 					searchCriteria.category = category;
 				}
-				$scope.expenses = Expenses.query(searchCriteria);
-				$scope.incomes = Incomes.query(searchCriteria);
+				var transactions = Transactions.query(searchCriteria, function(){
+					$scope.expenses = transactions.filter(filterExpenses)
+					$scope.incomes = transactions.filter(filterIncomes)
+				});
+
 			}						
 		};
 		SearchCriteria.subscribeObserver(reloadTransactionsCallback);
@@ -173,23 +184,25 @@ financeControllers.controller('TransCtrl', ['$scope',
 		}
 
 		function validateAndPersistExpense(expense){
-			validateAndPersistTransaction(expense, Expenses, $scope.expenses, $scope.expensesToAdd);
+			validateAndPersistTransaction(expense, "E", $scope.expenses, $scope.expensesToAdd);
 		}
 		
 		function validateAndPersistIncome(income){
-			validateAndPersistTransaction(income, Incomes, $scope.incomes, $scope.incomesToAdd);
+			validateAndPersistTransaction(income, "I", $scope.incomes, $scope.incomesToAdd);
 		}
 		
-		function validateAndPersistTransaction(transaction, saveService, postSaveList, inputList){
+		function validateAndPersistTransaction(transaction, tType, postSaveList, inputList){
 			if(!Utils.isEmpty(transaction.category) && !Utils.isEmpty(transaction.tDate) && !Utils.isMalformedDate(transaction.tDate)){
 				var tToSave = new Object();
 				tToSave.tDate = transaction.tDate;
+				tToSave.tType = tType.toUpperCase();
 				tToSave.category = transaction.category.toUpperCase();
 				tToSave.amount = parseFloat(transaction.amount);
-				var newT = saveService.save(tToSave, function(){
+				var newT = Transactions.save(tToSave, function(){
 					var tToDisplay = new Object();
 					tToDisplay.tid = newT.tid;
 					tToDisplay.tDate = newT.tDate;
+					tToDisplay.tType = nbewT.tType;
 					tToDisplay.category = newT.category;
 					tToDisplay.amount = parseFloat(newT.amount.toFixed(2));
 					postSaveList.push(tToDisplay);
@@ -204,7 +217,7 @@ financeControllers.controller('TransCtrl', ['$scope',
 			
 		$scope.deleteExpense = function(expense){
 			if(confirm('Are you sure you want to delete this transaction?')){
-				Expenses.delete({id:expense.tid});
+				Transactions.delete({id:expense.tid});
 				var idx = $scope.expenses.indexOf(expense);
 				$scope.expenses.splice(idx,1);
 			}
@@ -212,7 +225,7 @@ financeControllers.controller('TransCtrl', ['$scope',
 
 		$scope.deleteIncome = function(income){
 			if(confirm('Are you sure you want to delete this transaction?')){
-				Incomes.delete({id:income.tid});
+				Transactions.delete({id:income.tid});
 				var idx = $scope.incomes.indexOf(income);
 				$scope.incomes.splice(idx,1);
 			}

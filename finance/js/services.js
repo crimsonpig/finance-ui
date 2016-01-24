@@ -63,14 +63,9 @@ financeServices.factory('SearchCriteria', function(){
 	}
 });
 
-financeServices.factory('Expenses', ['$resource',
+financeServices.factory('Transactions', ['$resource',
 	function($resource){
-		return $resource('http://linuxbox/transactions/expenses/:id');
-}]);
-
-financeServices.factory('Incomes', ['$resource',
-	function($resource){
-		return $resource('http://linuxbox/transactions/incomes/:id');
+		return $resource('http://linuxbox/transactions/:id');
 }]);
 
 financeServices.factory('BudgetItems', ['$resource',
