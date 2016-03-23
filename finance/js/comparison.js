@@ -24,7 +24,7 @@ comparisonControllers.controller('CompareCtrl', ['$scope', 'SearchCriteria', 'Bu
 		$scope.expOrderToggle = false;
 		$scope.incOrderProp = 'amount';
 		$scope.incOrderToggle = false;		
-		$scope.showIncomes = true;
+		$scope.showIncomes = false;
 		$scope.showExpenses = true;		
 		
 		function clickOnEnter(event, func){
