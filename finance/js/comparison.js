@@ -32,9 +32,7 @@ comparisonControllers.controller('CompareCtrl', ['$scope', 'SearchCriteria', 'Bu
 				func();
 			}
 		};
-		
 
-		
 		$scope.displayIncomes = function(){
 			$scope.showIncomes = !($scope.showIncomes);
 		};
@@ -51,8 +49,8 @@ comparisonControllers.controller('CompareCtrl', ['$scope', 'SearchCriteria', 'Bu
 			clickOnEnter(event, $scope.displayExpenses);
 		};
 		
-		$scope.sortReportItemsBy = function(reportType, fieldName){
-			if(reportType == 'expenses'){
+		$scope.sortCompareItemsBy = function(compareType, fieldName){
+			if(compareType == 'expenses'){
 				if($scope.expOrderProp == fieldName){
 					$scope.expOrderToggle = !($scope.expOrderToggle);
 				}else{
@@ -60,7 +58,7 @@ comparisonControllers.controller('CompareCtrl', ['$scope', 'SearchCriteria', 'Bu
 					$scope.expOrderToggle = false;
 				}
 			}
-			else if(reportType == 'incomes'){
+			else if(compareType == 'incomes'){
 				if($scope.incOrderProp == fieldName){
 					$scope.incOrderToggle = !($scope.incOrderToggle);
 				}else{
