@@ -11,6 +11,10 @@ table {
 	margin-right: auto;
 }
 
+.total-row {
+	font-weight: bold;
+	background-color: #EEEEEE;
+}
 
 th {
 	color: #EEEEEE;

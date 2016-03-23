@@ -1,15 +1,14 @@
-<h3 class="totalDisplay-false" id="netTotal">Net Total: </h3>
 <div>
 	<div id="incomeDetails" class="section">
-		<h3 class="sectionHeader-{{showIncomes}}" ng-keypress="kDisplayIncomes($event)" ng-click="displayIncomes()">Incomes: </h3>
+		<h3 class="sectionHeader-{{showIncomes}}" ng-keypress="kDisplayIncomes($event)" ng-click="displayIncomes()">Incomes</h3>
 		<div class="tableContainer" ng-show="showIncomes">
 			<table>
 				<thead>
 					<tr>
 						<th ng-click="sortReportItemsBy('incomes','category')">Category</th>
-						<th ng-click="sortReportItemsBy('incomes','actualAmount')">Actual Amount</th>
 						<th ng-click="sortReportItemsBy('incomes','expectedAmount')">Expected Amount</th>
-						<th ng-click="sortReportItemsBy('incomes','netDifference')">Net Difference</th>
+						<th ng-click="sortReportItemsBy('incomes','actualAmount')">Actual Amount</th>
+						<th ng-click="sortReportItemsBy('incomes','netDifference')">Amount Remaining</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -20,19 +19,27 @@
 						<td>{{comparisonItem.netDifference.toFixed(2)}}</td>
 					</tr>			
 				</tbody>
+				<tfoot>
+					<tr class="total-row">
+						<td>TOTAL</td>
+						<td>{{budgetComparison.expectedIncomeTotal.toFixed(2)}}</td>
+						<td>{{budgetComparison.actualIncomeTotal.toFixed(2)}}</td>
+						<td>{{budgetComparison.netIncomeDifference.toFixed(2)}}</td>
+					</tr>	
+				</tfoot>
 			</table>
 		</div>
 	</div>
 	<div id="expenseDetails" class="section">
-		<h3 class="sectionHeader-{{showExpenses}}" ng-keypress="kDisplayExpenses($event)" ng-click="displayExpenses()">Expenses: </h3>
+		<h3 class="sectionHeader-{{showExpenses}}" ng-keypress="kDisplayExpenses($event)" ng-click="displayExpenses()">Expenses</h3>
 		<div class="tableContainer" ng-show="showExpenses">
 			<table>
 				<thead>
 					<tr>
 						<th ng-click="sortReportItemsBy('incomes','category')">Category</th>
-						<th ng-click="sortReportItemsBy('incomes','actualAmount')">Actual Amount</th>
 						<th ng-click="sortReportItemsBy('incomes','expectedAmount')">Expected Amount</th>
-						<th ng-click="sortReportItemsBy('incomes','netDifference')">Net Difference</th>
+						<th ng-click="sortReportItemsBy('incomes','actualAmount')">Actual Amount</th>
+						<th ng-click="sortReportItemsBy('incomes','netDifference')">Amount Remaining</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -43,6 +50,14 @@
 						<td>{{comparisonItem.netDifference.toFixed(2)}}</td>
 					</tr>
 				</tbody>
+				<tfoot>
+					<tr class="total-row">
+						<td>TOTAL</td>
+						<td>{{budgetComparison.expectedExpenseTotal.toFixed(2)}}</td>
+						<td>{{budgetComparison.actualExpenseTotal.toFixed(2)}}</td>
+						<td>{{budgetComparison.netExpenseDifference.toFixed(2)}}</td>
+					</tr>	
+				</tfoot>				
 			</table>
 		</div>
 	</div>
