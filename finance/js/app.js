@@ -1,4 +1,4 @@
-var financeApp = angular.module('finance-app', ['ngRoute', 'financeServices', 'financeControllers', 'reportControllers', 'budgetControllers']); 
+var financeApp = angular.module('finance-app', ['ngRoute', 'financeServices', 'financeControllers', 'reportControllers', 'budgetControllers', 'comparisonControllers']); 
 
 financeApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 	$routeProvider
@@ -13,6 +13,10 @@ financeApp.config(['$routeProvider', '$locationProvider', function($routeProvide
 		.when('/summary', {
 			controller:'ReportCtrl',
 			templateUrl:'partials/reports.html'
+		})
+		.when('/compare', {
+			controller:'CompareCtrl',
+			templateUrl:'partials/compare.html'
 		})
 		.otherwise({
 			redirectTo: '/transactions'

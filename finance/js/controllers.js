@@ -9,6 +9,7 @@ financeControllers.controller('SearchCtrl', ['$scope', 'SearchCriteria', functio
 		$scope.viewTrans = false;
 		$scope.viewReport = false;
 		$scope.viewBudget = false;
+		$scope.viewComparison = false;
 
 		$scope.startDate = SearchCriteria.firstDayOfMonth();
 		$scope.endDate = SearchCriteria.lastDayOfMonth();
@@ -19,19 +20,29 @@ financeControllers.controller('SearchCtrl', ['$scope', 'SearchCriteria', functio
 		$scope.setViewTrans = function(){
 			$scope.viewTrans = true;
 			$scope.viewReport = false;
-			$scope.viewBudget = false;			
+			$scope.viewBudget = false;	
+			$scope.viewComparison = false;		
 		};
 		
 		$scope.setViewReport = function(){
 			$scope.viewReport = true;
 			$scope.viewTrans = false;
 			$scope.viewBudget = false;			
+			$scope.viewComparison = false;
 		};
 		
 		$scope.setViewBudget = function(){
 			$scope.viewBudget = true;
 			$scope.viewReport = false;
 			$scope.viewTrans = false;
+			$scope.viewComparison = false;
+		};		
+		
+		$scope.setViewComparison = function(){
+			$scope.viewBudget = false;
+			$scope.viewReport = false;
+			$scope.viewTrans = false;
+			$scope.viewComparison = true;
 		};		
 }]);
 

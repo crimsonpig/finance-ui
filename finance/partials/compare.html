@@ -1,0 +1,49 @@
+<h3 class="totalDisplay-false" id="netTotal">Net Total: </h3>
+<div>
+	<div id="incomeDetails" class="section">
+		<h3 class="sectionHeader-{{showIncomes}}" ng-keypress="kDisplayIncomes($event)" ng-click="displayIncomes()">Incomes: </h3>
+		<div class="tableContainer" ng-show="showIncomes">
+			<table>
+				<thead>
+					<tr>
+						<th ng-click="sortReportItemsBy('incomes','category')">Category</th>
+						<th ng-click="sortReportItemsBy('incomes','actualAmount')">Actual Amount</th>
+						<th ng-click="sortReportItemsBy('incomes','expectedAmount')">Expected Amount</th>
+						<th ng-click="sortReportItemsBy('incomes','netDifference')">Net Difference</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="comparisonItem in budgetComparison.incomes | orderBy:incOrderProp:incOrderToggle">
+						<td>{{comparisonItem.category}}</td>
+						<td>{{comparisonItem.expectedAmount.toFixed(2)}}</td>
+						<td>{{comparisonItem.actualAmount.toFixed(2)}}</td>
+						<td>{{comparisonItem.netDifference.toFixed(2)}}</td>
+					</tr>			
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div id="expenseDetails" class="section">
+		<h3 class="sectionHeader-{{showExpenses}}" ng-keypress="kDisplayExpenses($event)" ng-click="displayExpenses()">Expenses: </h3>
+		<div class="tableContainer" ng-show="showExpenses">
+			<table>
+				<thead>
+					<tr>
+						<th ng-click="sortReportItemsBy('incomes','category')">Category</th>
+						<th ng-click="sortReportItemsBy('incomes','actualAmount')">Actual Amount</th>
+						<th ng-click="sortReportItemsBy('incomes','expectedAmount')">Expected Amount</th>
+						<th ng-click="sortReportItemsBy('incomes','netDifference')">Net Difference</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="comparisonItem in budgetComparison.expenses | orderBy:expOrderProp:expOrderToggle">
+						<td>{{comparisonItem.category}}</td>
+						<td>{{comparisonItem.expectedAmount.toFixed(2)}}</td>
+						<td>{{comparisonItem.actualAmount.toFixed(2)}}</td>
+						<td>{{comparisonItem.netDifference.toFixed(2)}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

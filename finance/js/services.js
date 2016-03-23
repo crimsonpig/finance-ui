@@ -78,6 +78,11 @@ financeServices.factory('TransactionsReport', ['$resource',
 		return $resource('http://linuxbox/reports/transactions');
 }]);
 
+financeServices.factory('BudgetComparison', ['$resource',
+	function($resource){
+		return $resource('http://linuxbox/budget/comparison');
+}]);
+
 financeServices.service('Utils', function(){
 	
 	function saveAllInputRows(rowsToSave, saveFunction){
