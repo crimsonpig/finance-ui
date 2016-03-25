@@ -213,7 +213,7 @@ financeControllers.controller('TransCtrl', ['$scope',
 					var tToDisplay = new Object();
 					tToDisplay.tid = newT.tid;
 					tToDisplay.tDate = newT.tDate;
-					tToDisplay.tType = nbewT.tType;
+					tToDisplay.tType = newT.tType;
 					tToDisplay.category = newT.category;
 					tToDisplay.amount = parseFloat(newT.amount.toFixed(2));
 					postSaveList.push(tToDisplay);
