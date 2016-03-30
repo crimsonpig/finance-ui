@@ -8,6 +8,7 @@
 						<th ng-click="sortCompareItemsBy('incomes','category')">Category</th>
 						<th ng-click="sortCompareItemsBy('incomes','expectedAmount')">Expected Amount</th>
 						<th ng-click="sortCompareItemsBy('incomes','actualAmount')">Actual Amount</th>
+						<th ng-click="sortCompareItemsBy('incomes','netDifference')">Net Difference</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -15,6 +16,7 @@
 						<td>{{comparisonItem.category}}</td>
 						<td>{{comparisonItem.expectedAmount.toFixed(2)}}</td>
 						<td>{{comparisonItem.actualAmount.toFixed(2)}}</td>
+						<td>{{comparisonItem.netDifference.toFixed(2)}}</td>
 					</tr>			
 				</tbody>
 				<tfoot>
@@ -22,6 +24,7 @@
 						<td>TOTAL</td>
 						<td>{{budgetComparison.expectedIncomeTotal.toFixed(2)}}</td>
 						<td>{{budgetComparison.actualIncomeTotal.toFixed(2)}}</td>
+						<td>{{budgetComparison.netIncomeDifference.toFixed(2)}}</td>
 					</tr>	
 				</tfoot>
 			</table>
