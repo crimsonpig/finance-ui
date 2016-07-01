@@ -91,16 +91,6 @@ financeControllers.controller('ReceiptCtrl', ['$scope', 'Utils',
 			}
 			Utils.focusOnButton("btnAddRpt");
 		}
-
-		$scope.saveAllReceiptItems = function(){
-			if($scope.receiptDate != null && !Utils.isMalformedDate($scope.receiptDate)){
-				$scope.calculatedReceiptItems.map(function(calcItem){
-					$scope.expensesToAdd.push({"tDate": $scope.receiptDate, "category": calcItem.category, "amount": calcItem.total, "isNew": true});
-				});
-				$scope.showExpenses = true;
-				document.getElementById("btnSaveAllExp").focus();
-			}
-		}
 		
 		$scope.deleteAllReceiptItems = function(){
 			$scope.calculatedReceiptItems.length = 0;
@@ -112,6 +102,18 @@ financeControllers.controller('ReceiptCtrl', ['$scope', 'Utils',
 			$scope.checkTax = 0.00;
 			$scope.checkTotal = 0.00;
 			$scope.receiptDate = '';
-			Utils.focusOnButton("btnAddRpt");
 		}
+		
+		$scope.saveAllReceiptItems = function(){
+			if($scope.receiptDate != null && !Utils.isMalformedDate($scope.receiptDate)){
+				$scope.calculatedReceiptItems.map(function(calcItem){
+					$scope.expensesToAdd.push({"tDate": $scope.receiptDate, "category": calcItem.category, "amount": calcItem.total, "isNew": true});
+				});
+				$scope.showExpenses = true;
+				$scope.deleteAllReceiptItems();
+				document.getElementById("btnSaveAllExp").focus();
+			}
+		}
+		
+
 }]);
