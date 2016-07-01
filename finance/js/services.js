@@ -93,7 +93,7 @@ financeServices.service('Utils', function(){
 	};
 	
 	function isEmpty(thing){
-		return thing == '';
+		return thing == null || thing == '';
 	};
 	
 	function isMalformedDate(tDate){
