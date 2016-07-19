@@ -58,6 +58,7 @@ header {
 nav {
 	margin: 0px;
 	width: auto;
+	margin-top: 0.5%;	
 }
 
 menu {
@@ -65,37 +66,38 @@ menu {
 	padding: 0px;
 	margin: 0px;
 	overflow: hidden;
-	background-color: #649ff0;	
-	border: thin solid #649ff0;
 }
 
 label {
 	font-weight: bold;
 }
 
-a, a:visited, a:hover, a:active, a:focus {
-	font-size: 14pt;
-	border: thin solid #EEEEEE;
-	text-decoration: none;
+li {
+	display: block;
 	font-weight: bold;
-	padding: 10px 20px;	
-	text-align: center;
-	margin: 0px 0px;	
+	font-size: 14pt;
+	text-align: center;	
+	margin-left: 1.5%;
+	margin-right: 1.5%;
+}
 
+a, a:visited, a:hover, a:active, a:focus {
+	text-decoration: none;
+	display: block;
+	padding: 0.5% 0%;
+	border-radius: 8px;
 }
 
 .navlink-false {
 	background-color: #649ff0;
-	color: #EEEEEE;		
+	color: #EEEEEE;	
+	border: thin solid #EEEEEE;
 }
 
 .navlink-true {
 	background-color: #EEEEEE;
 	color: #649ff0;	
-}
-
-li {
-	display: inline;
+	border: thin solid #649ff0;
 }
 
 h3 {
