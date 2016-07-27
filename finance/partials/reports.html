@@ -1,7 +1,7 @@
 <h3 class="totalDisplay-false" id="netTotal">Net Total: {{transactionsReport.netTotal.toFixed(2)}}</h3>
 <div>
 	<div id="incomeDetails" class="section">
-		<h3 class="sectionHeader-{{showIncomes}}" ng-keypress="kDisplayIncomes($event)" ng-click="displayIncomes()">Incomes: {{transactionsReport.incomesTotal.toFixed(2)}}</h3>
+		<h3 class="sectionHeader-{{showIncomes}}" ng-click="displayIncomes()">Incomes: {{transactionsReport.incomesTotal.toFixed(2)}}</h3>
 		<div class="tableContainer" ng-show="showIncomes">
 			<table>
 				<thead>
@@ -20,7 +20,7 @@
 		</div>
 	</div>
 	<div id="expenseDetails" class="section">
-		<h3 class="sectionHeader-{{showExpenses}}" ng-keypress="kDisplayExpenses($event)" ng-click="displayExpenses()">Expenses: {{transactionsReport.expensesTotal.toFixed(2)}}</h3>
+		<h3 class="sectionHeader-{{showExpenses}}" ng-click="displayExpenses()">Expenses: {{transactionsReport.expensesTotal.toFixed(2)}}</h3>
 		<div class="tableContainer" ng-show="showExpenses">
 			<table>
 				<thead>

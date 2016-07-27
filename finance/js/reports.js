@@ -26,31 +26,15 @@ reportControllers.controller('ReportCtrl', ['$scope', 'SearchCriteria', 'Transac
 		$scope.incOrderToggle = false;		
 		$scope.showIncomes = true;
 		$scope.showExpenses = true;		
-		
-		function clickOnEnter(event, func){
-			if(event.keyCode === 13){
-				func();
-			}
-		};
-		
 
-		
 		$scope.displayIncomes = function(){
 			$scope.showIncomes = !($scope.showIncomes);
 		};
-		
-		$scope.kDisplayIncomes = function(event){ 
-			clickOnEnter(event, $scope.displayIncomes); 			
-		}
-		
+
 		$scope.displayExpenses = function(){
 			$scope.showExpenses = !($scope.showExpenses);
 		};
 
-		$scope.kDisplayExpenses = function(event){
-			clickOnEnter(event, $scope.displayExpenses);
-		};
-		
 		$scope.sortReportItemsBy = function(reportType, fieldName){
 			if(reportType == 'expenses'){
 				if($scope.expOrderProp == fieldName){
