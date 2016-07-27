@@ -1,5 +1,27 @@
 var reportControllers = angular.module('reportControllers', []); 
 
+
+reportControllers.controller('SummaryCtrl', ['$scope', function($scope){
+
+		$scope.orderProp = 'category';
+		$scope.orderToggle = false;
+		$scope.showList = true;		
+
+		$scope.displayList = function(){
+			$scope.showList = !($scope.showList);
+		};
+
+		$scope.sortItemsBy = function(fieldName){
+			if($scope.orderProp == fieldName){
+				$scope.orderToggle = !($scope.orderToggle);
+			}else{
+				$scope.orderProp = fieldName;
+				$scope.orderToggle = false;
+			}
+		}	
+	
+}]);
+
 reportControllers.controller('ReportCtrl', ['$scope', 'SearchCriteria', 'TransactionsReport', 
 	function($scope, SearchCriteria, TransactionsReport) {
 
