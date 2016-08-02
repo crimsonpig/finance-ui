@@ -258,8 +258,4 @@ financeControllers.controller('TransCtrl', ['$scope',
 				return $scope.expTotal.toFixed(2);
 		}	
 		
-		$scope.getNetTotal = function(){
-				return ($scope.incTotal - $scope.expTotal).toFixed(2);
-		}
-		
 }]);
