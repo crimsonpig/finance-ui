@@ -6,10 +6,8 @@ function debug(text){
 }
 
 financeControllers.controller('SearchCtrl', ['$scope', 'ViewSwitches', 'SearchCriteria', function($scope, ViewSwitches, SearchCriteria) {
-		$scope.viewTrans = false;
-		$scope.viewReport = false;
-		$scope.viewBudget = false;
-		$scope.viewComparison = false;
+
+		$scope.currentView = 'transactions';
 
 		$scope.startDate = SearchCriteria.firstDayOfMonth();
 		$scope.endDate = SearchCriteria.lastDayOfMonth();
@@ -17,44 +15,8 @@ financeControllers.controller('SearchCtrl', ['$scope', 'ViewSwitches', 'SearchCr
 			SearchCriteria.search(startDate, endDate, category);
 		};
 
-		function setViewTrans(){
-			$scope.viewTrans = true;
-			$scope.viewReport = false;
-			$scope.viewBudget = false;	
-			$scope.viewComparison = false;		
-		};
-		
-		function setViewReport(){
-			$scope.viewReport = true;
-			$scope.viewTrans = false;
-			$scope.viewBudget = false;			
-			$scope.viewComparison = false;
-		};
-		
-		function setViewBudget(){
-			$scope.viewBudget = true;
-			$scope.viewReport = false;
-			$scope.viewTrans = false;
-			$scope.viewComparison = false;
-		};		
-		
-		function setViewComparison(){
-			$scope.viewBudget = false;
-			$scope.viewReport = false;
-			$scope.viewTrans = false;
-			$scope.viewComparison = true;
-		};		
-			
 		function whenViewChanges(viewLoaded){
-			if(viewLoaded == 'summary'){
-				setViewReport();
-			} else if(viewLoaded == 'transactions'){
-				setViewTrans();
-			} else if(viewLoaded == 'budget'){
-				setViewBudget();
-			} else if(viewLoaded == 'compare'){
-				setViewComparison();
-			}
+			$scope.currentView = viewLoaded;
 		};
 		ViewSwitches.subscribe(whenViewChanges);
 }]);

@@ -30,22 +30,22 @@
 			<nav>
 				<menu>
 					<li>
-						<a class="navlink-{{viewTrans}}" tabindex="5" ng-href="#/transactions">
+						<a class="navlink-{{currentView == 'transactions'}}" tabindex="5" ng-href="#/transactions">
 							Transactions
 						</a>
 					</li>
 					<li>
-						<a class="navlink-{{viewReport}}" tabindex="6" ng-href="#/summary">
+						<a class="navlink-{{currentView == 'summary'}}" tabindex="6" ng-href="#/summary">
 							Summary
 						</a>
 					</li>					
 					<li>
-						<a class="navlink-{{viewBudget}}" tabindex="7" ng-href="#/budget">
+						<a class="navlink-{{currentView == 'budget'}}" tabindex="7" ng-href="#/budget">
 							Budget
 						</a>
 					</li>										
 					<li>
-						<a class="navlink-{{viewComparison}}" tabindex="8" ng-href="#/compare">
+						<a class="navlink-{{currentView == 'compare'}}" tabindex="8" ng-href="#/compare">
 							Comparison
 						</a>
 					</li>					
