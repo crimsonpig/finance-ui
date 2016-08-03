@@ -5,7 +5,7 @@ function debug(text){
 		console.log(text);
 }
 
-financeControllers.controller('SearchCtrl', ['$scope', 'ViewSwitches', 'SearchCriteria', function($scope, ViewSwitches, SearchCriteria) {
+financeControllers.controller('SearchCtrl', ['$scope', 'ViewChangeCallbacks', 'SearchCriteria', function($scope, ViewChangeCallbacks, SearchCriteria) {
 
 		$scope.currentView = 'transactions';
 
@@ -18,13 +18,13 @@ financeControllers.controller('SearchCtrl', ['$scope', 'ViewSwitches', 'SearchCr
 		function whenViewChanges(viewLoaded){
 			$scope.currentView = viewLoaded;
 		};
-		ViewSwitches.subscribe(whenViewChanges);
+		ViewChangeCallbacks.addViewChangeListener(whenViewChanges);
 }]);
 
-financeControllers.controller('TransCtrl', ['$scope', 'ViewSwitches', 
+financeControllers.controller('TransCtrl', ['$scope', 'ViewChangeCallbacks', 
 	'SearchCriteria', 'Transactions', 'Utils', 
-	function ($scope, ViewSwitches, SearchCriteria, Transactions, Utils) {
-		ViewSwitches.publish('transactions');
+	function ($scope, ViewChangeCallbacks, SearchCriteria, Transactions, Utils) {
+		ViewChangeCallbacks.changeToView('transactions');
 
 		$scope.expOrderProp = 'tDate';
 		$scope.expOrderToggle = true;

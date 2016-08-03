@@ -1,22 +1,22 @@
 var financeServices = angular.module('financeServices', ['ngResource']);
 
-financeServices.factory('ViewSwitches', function(){
+financeServices.factory('ViewChangeCallbacks', function(){
 	
-	var listOfCallbackFunctions = [];
+	var viewChangeListeners = [];
 	
-	function publish(dataObject){
-		listOfCallbackFunctions.map(function(callback){
-			callback(dataObject);
+	function changeToView(newViewName){
+		viewChangeListeners.map(function(whenViewChanges){
+			whenViewChanges(newViewName);
 		});
 	};
 	
-	function subscribe(callbackFunction){
-		listOfCallbackFunctions.push(callbackFunction);
+	function addViewChangeListener(callbackFunction){
+		viewChangeListeners.push(callbackFunction);
 	};
 	
 	return {
-		publish: publish,
-		subscribe: subscribe
+		changeToView: changeToView,
+		addViewChangeListener: addViewChangeListener
 	}
 });
 

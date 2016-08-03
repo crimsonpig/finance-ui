@@ -22,9 +22,9 @@ reportControllers.controller('SummaryCtrl', ['$scope', function($scope){
 	
 }]);
 
-reportControllers.controller('ReportCtrl', ['$scope', 'ViewSwitches', 'SearchCriteria', 'TransactionsReport', 
-	function($scope, ViewSwitches, SearchCriteria, TransactionsReport) {
-		ViewSwitches.publish('summary');
+reportControllers.controller('ReportCtrl', ['$scope', 'ViewChangeCallbacks', 'SearchCriteria', 'TransactionsReport', 
+	function($scope, ViewChangeCallbacks, SearchCriteria, TransactionsReport) {
+		ViewChangeCallbacks.changeToView('summary');
 
 		function reloadReportCallback(startDate, endDate, category){
 			$scope.transactionsReport = {expenses:[], incomes:[]};
