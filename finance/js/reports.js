@@ -22,11 +22,10 @@ reportControllers.controller('SummaryCtrl', ['$scope', function($scope){
 	
 }]);
 
-reportControllers.controller('ReportCtrl', ['$scope', 'SearchCriteria', 'TransactionsReport', 
-	function($scope, SearchCriteria, TransactionsReport) {
+reportControllers.controller('ReportCtrl', ['$scope', 'ViewSwitches', 'SearchCriteria', 'TransactionsReport', 
+	function($scope, ViewSwitches, SearchCriteria, TransactionsReport) {
+		ViewSwitches.publish('summary');
 
-		$scope.setViewReport();
-				
 		function reloadReportCallback(startDate, endDate, category){
 			$scope.transactionsReport = {expenses:[], incomes:[]};
 			if(startDate != '' && endDate != ''){

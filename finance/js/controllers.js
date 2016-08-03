@@ -5,7 +5,7 @@ function debug(text){
 		console.log(text);
 }
 
-financeControllers.controller('SearchCtrl', ['$scope', 'SearchCriteria', function($scope, SearchCriteria) {
+financeControllers.controller('SearchCtrl', ['$scope', 'ViewSwitches', 'SearchCriteria', function($scope, ViewSwitches, SearchCriteria) {
 		$scope.viewTrans = false;
 		$scope.viewReport = false;
 		$scope.viewBudget = false;
@@ -17,40 +17,53 @@ financeControllers.controller('SearchCtrl', ['$scope', 'SearchCriteria', functio
 			SearchCriteria.search(startDate, endDate, category);
 		};
 
-		$scope.setViewTrans = function(){
+		function setViewTrans(){
 			$scope.viewTrans = true;
 			$scope.viewReport = false;
 			$scope.viewBudget = false;	
 			$scope.viewComparison = false;		
 		};
 		
-		$scope.setViewReport = function(){
+		function setViewReport(){
 			$scope.viewReport = true;
 			$scope.viewTrans = false;
 			$scope.viewBudget = false;			
 			$scope.viewComparison = false;
 		};
 		
-		$scope.setViewBudget = function(){
+		function setViewBudget(){
 			$scope.viewBudget = true;
 			$scope.viewReport = false;
 			$scope.viewTrans = false;
 			$scope.viewComparison = false;
 		};		
 		
-		$scope.setViewComparison = function(){
+		function setViewComparison(){
 			$scope.viewBudget = false;
 			$scope.viewReport = false;
 			$scope.viewTrans = false;
 			$scope.viewComparison = true;
 		};		
+			
+		function whenViewChanges(viewLoaded){
+			if(viewLoaded == 'summary'){
+				setViewReport();
+			} else if(viewLoaded == 'transactions'){
+				setViewTrans();
+			} else if(viewLoaded == 'budget'){
+				setViewBudget();
+			} else if(viewLoaded == 'compare'){
+				setViewComparison();
+			}
+		};
+		ViewSwitches.subscribe(whenViewChanges);
 }]);
 
-financeControllers.controller('TransCtrl', ['$scope', 
+financeControllers.controller('TransCtrl', ['$scope', 'ViewSwitches', 
 	'SearchCriteria', 'Transactions', 'Utils', 
-	function ($scope, SearchCriteria, Transactions, Utils) {
-		$scope.setViewTrans();
-		
+	function ($scope, ViewSwitches, SearchCriteria, Transactions, Utils) {
+		ViewSwitches.publish('transactions');
+
 		$scope.expOrderProp = 'tDate';
 		$scope.expOrderToggle = true;
 		$scope.incOrderProp = 'tDate';

@@ -1,10 +1,10 @@
 var budgetControllers = angular.module('budgetControllers', []); 
 
 
-budgetControllers.controller('BudgetCtrl', ['$scope', 
+budgetControllers.controller('BudgetCtrl', ['$scope', 'ViewSwitches', 
 	'SearchCriteria', 'BudgetItems', 'Utils', 
-	function ($scope, SearchCriteria, BudgetItems, Utils) {
-		$scope.setViewBudget();
+	function ($scope, ViewSwitches, SearchCriteria, BudgetItems, Utils) {
+		ViewSwitches.publish('budget');
 		
 		$scope.expOrderProp = 'category';
 		$scope.expOrderToggle = false;

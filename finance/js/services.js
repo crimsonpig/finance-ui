@@ -1,5 +1,25 @@
 var financeServices = angular.module('financeServices', ['ngResource']);
 
+financeServices.factory('ViewSwitches', function(){
+	
+	var listOfCallbackFunctions = [];
+	
+	function publish(dataObject){
+		listOfCallbackFunctions.map(function(callback){
+			callback(dataObject);
+		});
+	};
+	
+	function subscribe(callbackFunction){
+		listOfCallbackFunctions.push(callbackFunction);
+	};
+	
+	return {
+		publish: publish,
+		subscribe: subscribe
+	}
+});
+
 financeServices.factory('SearchCriteria', function(){
 
 	var observers = [];

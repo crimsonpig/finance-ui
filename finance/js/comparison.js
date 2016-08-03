@@ -1,9 +1,9 @@
 var comparisonControllers = angular.module('comparisonControllers', []); 
 
-comparisonControllers.controller('CompareCtrl', ['$scope', 'SearchCriteria', 'BudgetComparison', 
-	function($scope, SearchCriteria, BudgetComparison) {
+comparisonControllers.controller('CompareCtrl', ['$scope', 'ViewSwitches', 'SearchCriteria', 'BudgetComparison', 
+	function($scope, ViewSwitches, SearchCriteria, BudgetComparison) {
 
-		$scope.setViewComparison();
+		ViewSwitches.publish('compare');
 				
 		function reloadComparisonCallback(startDate, endDate, category){
 			$scope.budgetComparison = {expenses:[], incomes:[]};
