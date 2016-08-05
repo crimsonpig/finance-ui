@@ -25,6 +25,10 @@ th {
 	cursor: default;
 }
 
+th:first-letter {
+	text-transform: capitalize;
+}
+
 td {
 	border: thin solid black;
 	border-collapse: collapse;

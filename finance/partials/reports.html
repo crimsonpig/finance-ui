@@ -6,14 +6,12 @@
 			<table>
 				<thead>
 					<tr>
-						<th ng-click="sortReportItemsBy('incomes','category')">Category</th>
-						<th ng-click="sortReportItemsBy('incomes','amount')">Amount</th>
+						<th ng-repeat="(key, value) in transactionsReport.incomes[0]" ng-click="sortReportItemsBy('incomes',key)">{{key}}</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="reportItem in transactionsReport.incomes | orderBy:incOrderProp:incOrderToggle">
-						<td>{{reportItem.category}}</td>
-						<td>{{reportItem.amount.toFixed(2)}}</td>
+					<tr ng-repeat="item in transactionsReport.incomes | orderBy:incOrderProp:incOrderToggle">
+						<td ng-repeat="(key, value) in item">{{value}}</td>
 					</tr>			
 				</tbody>
 			</table>
@@ -25,14 +23,12 @@
 			<table>
 				<thead>
 					<tr>
-						<th ng-click="sortReportItemsBy('expenses','category')">Category</th>
-						<th ng-click="sortReportItemsBy('expenses','amount')">Amount</th>
+						<th ng-repeat="(key, value) in transactionsReport.expenses[0]" ng-click="sortReportItemsBy('expenses',key)">{{key}}</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="reportItem in transactionsReport.expenses | orderBy:expOrderProp:expOrderToggle">
-						<td>{{reportItem.category}}</td>
-						<td>{{reportItem.amount.toFixed(2)}}</td>
+					<tr ng-repeat="item in transactionsReport.expenses | orderBy:expOrderProp:expOrderToggle">
+						<td ng-repeat="(key, value) in item">{{value}}</td>
 					</tr>
 				</tbody>
 			</table>
