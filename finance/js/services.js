@@ -85,22 +85,22 @@ financeServices.factory('SearchCriteria', function(){
 
 financeServices.factory('Transactions', ['$resource',
 	function($resource){
-		return $resource('http://linuxbox/transactions/:id');
+		return $resource('http://localhost:8082/transactions/:id');
 }]);
 
 financeServices.factory('BudgetItems', ['$resource',
 	function($resource){
-		return $resource('http://linuxbox/budget/:id');
+		return $resource('http://localhost:8082/budget/:id');
 }]);
 
 financeServices.factory('TransactionsReport', ['$resource',
 	function($resource){
-		return $resource('http://linuxbox/reports/transactions');
+		return $resource('http://localhost:8082/reports/transactions');
 }]);
 
 financeServices.factory('BudgetComparison', ['$resource',
 	function($resource){
-		return $resource('http://linuxbox/budget/comparison');
+		return $resource('http://localhost:8082/budget/comparison');
 }]);
 
 financeServices.service('Utils', function(){
