@@ -9,7 +9,7 @@
 					<th ng-click="sortTransactionsBy('incomes','category')">Category</th>
 					<th ng-click="sortTransactionsBy('incomes','amount')">Amount</th>
 					<th>
-						<button type="button" ng-click="addRow(incomesToAdd)" id="btnAddInc">Add Income</button>
+						<button type="button" ng-click="addRow(incomesToAdd, 'I')" id="btnAddInc">Add Income</button>
 					</th>
 				</tr>
 			</thead>
@@ -53,7 +53,7 @@
 					<th ng-click="sortTransactionsBy('expenses','category')">Category</th>
 					<th ng-click="sortTransactionsBy('expenses','amount')">Amount</th>
 					<th>
-						<button type="button" ng-click="addRow(expensesToAdd)" id="btnAddExp">Add Expense</button>
+						<button type="button" ng-click="addRow(expensesToAdd, 'E')" id="btnAddExp">Add Expense</button>
 					</th>
 				</tr>
 			</thead>

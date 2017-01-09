@@ -95,8 +95,8 @@ financeControllers.controller('TransCtrl', ['$scope', 'ViewChangeCallbacks',
 		$scope.expensesToAdd = [];
 		$scope.incomesToAdd = [];
 		
-		$scope.addRow = function(transactionsToAdd){
-			transactionsToAdd.push({"tDate": "", "category": "", "amount": 0.00, "isNew": true});
+		$scope.addRow = function(transactionsToAdd, tType){
+			transactionsToAdd.push({"tDate": "", "category": "", "amount": 0.00, "tType": tType, "isNew": true});
 		}
 
 		$scope.hasInputRows = function(transactionsToAdd){
@@ -120,18 +120,18 @@ financeControllers.controller('TransCtrl', ['$scope', 'ViewChangeCallbacks',
 		}
 
 		$scope.saveExpense = function(expense){
-			validateAndPersistTransaction(expense, "E", $scope.expenses, $scope.expensesToAdd);
+			validateAndPersistTransaction(expense, $scope.expenses, $scope.expensesToAdd);
 		}
 		
 		$scope.saveIncome = function(income){
-			validateAndPersistTransaction(income, "I", $scope.incomes, $scope.incomesToAdd);
+			validateAndPersistTransaction(income, $scope.incomes, $scope.incomesToAdd);
 		}
 
-		function validateAndPersistTransaction(transaction, tType, postSaveList, inputList){
+		function validateAndPersistTransaction(transaction, postSaveList, inputList){
 			if(!Utils.isEmpty(transaction.category) && !Utils.isEmpty(transaction.tDate) && !Utils.isMalformedDate(transaction.tDate)){
 				var tToSave = new Object();
 				tToSave.tDate = transaction.tDate;
-				tToSave.tType = tType.toUpperCase();
+				tToSave.tType = transaction.tType.toUpperCase();
 				tToSave.category = transaction.category.toUpperCase();
 				tToSave.amount = parseFloat(transaction.amount);
 				var newT = Transactions.save(tToSave, function(){
