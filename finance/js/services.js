@@ -104,14 +104,7 @@ financeServices.factory('BudgetComparison', ['$resource',
 }]);
 
 financeServices.service('Utils', function(){
-	
-	function saveAllInputRows(rowsToSave, saveFunction){
-		var iteratorArray = rowsToSave.slice(0);
-		iteratorArray.map(function(saveItem){
-			saveFunction(saveItem);
-		});
-	};
-	
+
 	function isEmpty(thing){
 		return thing == null || thing == '';
 	};
@@ -131,7 +124,6 @@ financeServices.service('Utils', function(){
 	};
 	
 	return {
-		saveAllInputRows : saveAllInputRows, 
 		isEmpty : isEmpty,
 		isMalformedDate : isMalformedDate, 
 		deleteRow: deleteRow, 
