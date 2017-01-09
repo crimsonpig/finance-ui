@@ -71,8 +71,8 @@ budgetControllers.controller('BudgetCtrl', ['$scope', 'ViewChangeCallbacks',
 		$scope.expenseItemsToAdd = [];
 		$scope.incomeItemsToAdd = [];
 		
-		$scope.addRow = function(budgetItemsToAdd){
-			budgetItemsToAdd.push({"startDate": "", "endDate": "", "category": "", "amount": 0.00, "isNew": true});
+		$scope.addRow = function(budgetItemsToAdd, itemType){
+			budgetItemsToAdd.push({"startDate": "", "endDate": "", "category": "", "amount": 0.00, "itemType": itemType, "isNew": true});
 		}
 
 		$scope.hasInputRows = function(budgetItemsToAdd){
@@ -96,20 +96,20 @@ budgetControllers.controller('BudgetCtrl', ['$scope', 'ViewChangeCallbacks',
 		}
 
 		$scope.saveExpense = function(expense){
-			validateAndPersistTransaction(expense, "E", $scope.expenseItems, $scope.expenseItemsToAdd);
+			validateAndPersistTransaction(expense, $scope.expenseItems, $scope.expenseItemsToAdd);
 		}
 		
 		$scope.saveIncome = function(income){
-			validateAndPersistTransaction(income, "I", $scope.incomeItems, $scope.incomeItemsToAdd);
+			validateAndPersistTransaction(income, $scope.incomeItems, $scope.incomeItemsToAdd);
 		}
 
-		function validateAndPersistTransaction(budgetItem, itemType, postSaveList, inputList){
+		function validateAndPersistTransaction(budgetItem, postSaveList, inputList){
 			if(!Utils.isEmpty(budgetItem.category) && !Utils.isEmpty(budgetItem.startDate) && !Utils.isMalformedDate(budgetItem.startDate)
 				&& !Utils.isEmpty(budgetItem.endDate) && !Utils.isMalformedDate(budgetItem.endDate)){
 				var itemToSave = new Object();
 				itemToSave.startDate = budgetItem.startDate;
 				itemToSave.endDate = budgetItem.endDate;				
-				itemToSave.itemType = itemType.toUpperCase();
+				itemToSave.itemType = budgetItem.itemType.toUpperCase();
 				itemToSave.category = budgetItem.category.toUpperCase();
 				itemToSave.amount = parseFloat(budgetItem.amount);
 				var newT = BudgetItems.save(itemToSave, function(){
