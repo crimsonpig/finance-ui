@@ -93,22 +93,18 @@ budgetControllers.controller('BudgetCtrl', ['$scope', 'ViewChangeCallbacks',
 
 		$scope.clearExpenseFromInput = function(expense){
 			Utils.deleteRow(expense, $scope.expenseItemsToAdd); 
-			Utils.focusOnButton("btnAddExp");
 		}
 		
 		$scope.clearIncomeFromInput = function(income){
 			Utils.deleteRow(income, $scope.incomeItemsToAdd);
-			Utils.focusOnButton("btnAddInc");
 		}
 		
 		$scope.saveExpense = function(expense){
 			validateAndPersistTransaction(expense, "E", $scope.expenseItems, $scope.expenseItemsToAdd);
-			Utils.focusOnButton("btnAddExp");
 		}
 		
 		$scope.saveIncome = function(income){
 			validateAndPersistTransaction(income, "I", $scope.incomeItems, $scope.incomeItemsToAdd);
-			Utils.focusOnButton("btnAddInc");
 		}
 
 		function validateAndPersistTransaction(budgetItem, itemType, postSaveList, inputList){

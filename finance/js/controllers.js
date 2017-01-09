@@ -117,32 +117,20 @@ financeControllers.controller('TransCtrl', ['$scope', 'ViewChangeCallbacks',
 
 		$scope.clearExpenseFromInput = function(expense){
 			Utils.deleteRow(expense, $scope.expensesToAdd); 
-			Utils.focusOnButton("btnAddExp");
 		}
 		
 		$scope.clearIncomeFromInput = function(income){
 			Utils.deleteRow(income, $scope.incomesToAdd);
-			Utils.focusOnButton("btnAddInc");
 		}
 		
 		$scope.saveExpense = function(expense){
-			validateAndPersistExpense(expense);
-			Utils.focusOnButton("btnAddExp");
-		}
-		
-		$scope.saveIncome = function(income){
-			validateAndPersistIncome(income);
-			Utils.focusOnButton("btnAddInc");
-		}
-
-		function validateAndPersistExpense(expense){
 			validateAndPersistTransaction(expense, "E", $scope.expenses, $scope.expensesToAdd);
 		}
 		
-		function validateAndPersistIncome(income){
+		$scope.saveIncome = function(income){
 			validateAndPersistTransaction(income, "I", $scope.incomes, $scope.incomesToAdd);
 		}
-		
+
 		function validateAndPersistTransaction(transaction, tType, postSaveList, inputList){
 			if(!Utils.isEmpty(transaction.category) && !Utils.isEmpty(transaction.tDate) && !Utils.isMalformedDate(transaction.tDate)){
 				var tToSave = new Object();
