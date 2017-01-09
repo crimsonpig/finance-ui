@@ -9,8 +9,6 @@
 					<th ng-click="sortTransactionsBy('incomes','category')">Category</th>
 					<th ng-click="sortTransactionsBy('incomes','amount')">Amount</th>
 					<th>
-						<button type="button" ng-click="saveAllIncomeRows()" ng-show="hasInputRows(incomesToAdd)">Save All</button>
-						<button type="button" ng-click="clearAllIncomeInputs()" ng-show="hasInputRows(incomesToAdd)">Cancel All</button>
 						<button type="button" ng-click="addRow(incomesToAdd)" id="btnAddInc">Add Income</button>
 					</th>
 				</tr>
@@ -55,8 +53,6 @@
 					<th ng-click="sortTransactionsBy('expenses','category')">Category</th>
 					<th ng-click="sortTransactionsBy('expenses','amount')">Amount</th>
 					<th>
-						<button type="button" ng-click="saveAllExpenseRows()" ng-show="hasInputRows(expensesToAdd)" id="btnSaveAllExp">Save All</button>
-						<button type="button" ng-click="clearAllExpenseInputs()" ng-show="hasInputRows(expensesToAdd)">Cancel All</button>
 						<button type="button" ng-click="addRow(expensesToAdd)" id="btnAddExp">Add Expense</button>
 					</th>
 				</tr>
@@ -159,7 +155,6 @@
 					</tbody>
 				</table>
 				<button type="button" id="btnSaveAllRpt" class="receiptItem" ng-click="saveAllReceiptItems()">Save All</button>
-				<button type="button" class="receiptItem" ng-click="deleteAllReceiptItems()">Cancel All</button>
 				<div id="checkTotals">
 					<div>Check Subtotal: {{checkSubtotal}} 
 						<span ng-show="checkSubtotal == receiptItemsSubtotal">Good!</span>

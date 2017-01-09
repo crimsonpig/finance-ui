@@ -129,16 +129,6 @@ financeControllers.controller('TransCtrl', ['$scope', 'ViewChangeCallbacks',
 			return !transaction.isNew && Utils.isEmpty(transaction.category);
 		}
 
-		$scope.clearAllExpenseInputs = function(){
-			$scope.expensesToAdd.length = 0;
-			Utils.focusOnButton("btnAddExp");
-		}	
-		
-		$scope.clearAllIncomeInputs = function(){
-			$scope.incomesToAdd.length = 0; 
-			Utils.focusOnButton("btnAddInc");
-		}
-		
 		$scope.clearExpenseFromInput = function(expense){
 			Utils.deleteRow(expense, $scope.expensesToAdd); 
 			Utils.focusOnButton("btnAddExp");
@@ -156,16 +146,6 @@ financeControllers.controller('TransCtrl', ['$scope', 'ViewChangeCallbacks',
 		
 		$scope.saveIncome = function(income){
 			validateAndPersistIncome(income);
-			Utils.focusOnButton("btnAddInc");
-		}
-
-		$scope.saveAllExpenseRows = function(){
-			Utils.saveAllInputRows($scope.expensesToAdd, validateAndPersistExpense);
-			Utils.focusOnButton("btnAddExp");
-		}
-		
-		$scope.saveAllIncomeRows = function(){
-			Utils.saveAllInputRows($scope.incomesToAdd, validateAndPersistIncome);
 			Utils.focusOnButton("btnAddInc");
 		}
 
