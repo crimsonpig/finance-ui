@@ -65,28 +65,14 @@ financeControllers.controller('TransCtrl', ['$scope', 'ViewChangeCallbacks',
 		SearchCriteria.subscribeObserver(reloadTransactionsCallback);
 		reloadTransactionsCallback(SearchCriteria.startDate, SearchCriteria.endDate, SearchCriteria.category);
 
-		function clickOnEnter(event, func){
-			if(event.keyCode === 13){
-				func();
-			}
-		};
-
 		$scope.displayIncomes = function(){
 			$scope.showIncomes = !($scope.showIncomes);
 		};
-		
-		$scope.kDisplayIncomes = function(event){ 
-			clickOnEnter(event, $scope.displayIncomes); 			
-		}
 
 		$scope.displayExpenses = function(){
 			$scope.showExpenses = !($scope.showExpenses);
 		};
 
-		$scope.kDisplayExpenses = function(event){
-			clickOnEnter(event, $scope.displayExpenses);
-		};
-		
 		$scope.sortTransactionsBy = function(transactionType, fieldName){
 			if(transactionType == 'expenses'){
 				if($scope.expOrderProp == fieldName){
