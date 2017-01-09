@@ -91,14 +91,10 @@ budgetControllers.controller('BudgetCtrl', ['$scope', 'ViewChangeCallbacks',
 			return !budgetItem.isNew && Utils.isEmpty(budgetItem.category);
 		}
 
-		$scope.clearExpenseFromInput = function(expense){
-			Utils.deleteRow(expense, $scope.expenseItemsToAdd); 
+		$scope.deleteItemFromInputs = function(item, listOfInputs){
+			Utils.deleteRow(item, listOfInputs); 
 		}
-		
-		$scope.clearIncomeFromInput = function(income){
-			Utils.deleteRow(income, $scope.incomeItemsToAdd);
-		}
-		
+
 		$scope.saveExpense = function(expense){
 			validateAndPersistTransaction(expense, "E", $scope.expenseItems, $scope.expenseItemsToAdd);
 		}

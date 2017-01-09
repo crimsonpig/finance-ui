@@ -29,7 +29,7 @@
 					</td>
 					<td>
 						<button type="button" ng-click="saveIncome(toAdd)" >save</button>
-						<button type="button" ng-click="clearIncomeFromInput(toAdd)" >cancel</button>
+						<button type="button" ng-click="deleteItemFromInputs(toAdd, incomesToAdd)" >cancel</button>
 					</td>
 				</tr>
 				<tr ng-repeat="transaction in incomes | orderBy:incOrderProp:incOrderToggle">
@@ -73,7 +73,7 @@
 					</td>
 					<td>
 						<button type="button" ng-click="saveExpense(toAdd)" >save</button>
-						<button type="button" ng-click="clearExpenseFromInput(toAdd)" >cancel</button>
+						<button type="button" ng-click="deleteItemFromInputs(toAdd, expensesToAdd)" >cancel</button>
 					</td>
 				</tr>
 				<tr ng-repeat="transaction in expenses | orderBy:expOrderProp:expOrderToggle">

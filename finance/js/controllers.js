@@ -115,14 +115,10 @@ financeControllers.controller('TransCtrl', ['$scope', 'ViewChangeCallbacks',
 			return !transaction.isNew && Utils.isEmpty(transaction.category);
 		}
 
-		$scope.clearExpenseFromInput = function(expense){
-			Utils.deleteRow(expense, $scope.expensesToAdd); 
+		$scope.deleteItemFromInputs = function(item, listOfInputs){
+			Utils.deleteRow(item, listOfInputs); 
 		}
-		
-		$scope.clearIncomeFromInput = function(income){
-			Utils.deleteRow(income, $scope.incomesToAdd);
-		}
-		
+
 		$scope.saveExpense = function(expense){
 			validateAndPersistTransaction(expense, "E", $scope.expenses, $scope.expensesToAdd);
 		}
