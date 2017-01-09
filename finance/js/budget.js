@@ -41,28 +41,14 @@ budgetControllers.controller('BudgetCtrl', ['$scope', 'ViewChangeCallbacks',
 		SearchCriteria.subscribeObserver(reloadBudgetsCallback);
 		reloadBudgetsCallback(SearchCriteria.startDate, SearchCriteria.endDate, SearchCriteria.category);
 
-		function clickOnEnter(event, func){
-			if(event.keyCode === 13){
-				func();
-			}
-		};
-
 		$scope.displayIncomes = function(){
 			$scope.showIncomes = !($scope.showIncomes);
 		};
-		
-		$scope.kDisplayIncomes = function(event){ 
-			clickOnEnter(event, $scope.displayIncomes); 			
-		}
 
 		$scope.displayExpenses = function(){
 			$scope.showExpenses = !($scope.showExpenses);
 		};
 
-		$scope.kDisplayExpenses = function(event){
-			clickOnEnter(event, $scope.displayExpenses);
-		};
-		
 		$scope.sortItemsBy = function(itemType, fieldName){
 			if(itemType == 'expenses'){
 				if($scope.expOrderProp == fieldName){
@@ -116,23 +102,15 @@ budgetControllers.controller('BudgetCtrl', ['$scope', 'ViewChangeCallbacks',
 		}
 		
 		$scope.saveExpense = function(expense){
-			validateAndPersistExpense(expense);
+			validateAndPersistTransaction(expense, "E", $scope.expenseItems, $scope.expenseItemsToAdd);
 			Utils.focusOnButton("btnAddExp");
 		}
 		
 		$scope.saveIncome = function(income){
-			validateAndPersistIncome(income);
+			validateAndPersistTransaction(income, "I", $scope.incomeItems, $scope.incomeItemsToAdd);
 			Utils.focusOnButton("btnAddInc");
 		}
 
-		function validateAndPersistExpense(expense){
-			validateAndPersistTransaction(expense, "E", $scope.expenseItems, $scope.expenseItemsToAdd);
-		}
-		
-		function validateAndPersistIncome(income){
-			validateAndPersistTransaction(income, "I", $scope.incomeItems, $scope.incomeItemsToAdd);
-		}
-		
 		function validateAndPersistTransaction(budgetItem, itemType, postSaveList, inputList){
 			if(!Utils.isEmpty(budgetItem.category) && !Utils.isEmpty(budgetItem.startDate) && !Utils.isMalformedDate(budgetItem.startDate)
 				&& !Utils.isEmpty(budgetItem.endDate) && !Utils.isMalformedDate(budgetItem.endDate)){
