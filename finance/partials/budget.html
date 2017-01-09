@@ -11,8 +11,6 @@
 					<th ng-click="sortItemsBy('incomes','category')">Category</th>
 					<th ng-click="sortItemsBy('incomes','amount')">Amount</th>
 					<th>
-						<button type="button" ng-click="saveAllIncomeRows()" ng-show="hasInputRows(incomeItemsToAdd)">Save All</button>
-						<button type="button" ng-click="clearAllIncomeInputs()" ng-show="hasInputRows(incomeItemsToAdd)">Cancel All</button>
 						<button type="button" ng-click="addRow(incomeItemsToAdd)" id="btnAddInc">Add Item</button>
 					</th>
 				</tr>
@@ -65,7 +63,6 @@
 					<th ng-click="sortItemsBy('expenses','amount')">Amount</th>
 					<th>
 						<button type="button" ng-click="saveAllExpenseRows()" ng-show="hasInputRows(expenseItemsToAdd)" id="btnSaveAllExp">Save All</button>
-						<button type="button" ng-click="clearAllExpenseInputs()" ng-show="hasInputRows(expenseItemsToAdd)">Cancel All</button>
 						<button type="button" ng-click="addRow(expenseItemsToAdd)" id="btnAddExp">Add Item</button>
 					</th>
 				</tr>

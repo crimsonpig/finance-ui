@@ -105,16 +105,6 @@ budgetControllers.controller('BudgetCtrl', ['$scope', 'ViewChangeCallbacks',
 			return !budgetItem.isNew && Utils.isEmpty(budgetItem.category);
 		}
 
-		$scope.clearAllExpenseInputs = function(){
-			$scope.expenseItemsToAdd.length = 0;
-			Utils.focusOnButton("btnAddExp");
-		}	
-		
-		$scope.clearAllIncomeInputs = function(){
-			$scope.incomeItemsToAdd.length = 0; 
-			Utils.focusOnButton("btnAddInc");
-		}
-		
 		$scope.clearExpenseFromInput = function(expense){
 			Utils.deleteRow(expense, $scope.expenseItemsToAdd); 
 			Utils.focusOnButton("btnAddExp");
@@ -132,16 +122,6 @@ budgetControllers.controller('BudgetCtrl', ['$scope', 'ViewChangeCallbacks',
 		
 		$scope.saveIncome = function(income){
 			validateAndPersistIncome(income);
-			Utils.focusOnButton("btnAddInc");
-		}
-
-		$scope.saveAllExpenseRows = function(){
-			Utils.saveAllInputRows($scope.expenseItemsToAdd, validateAndPersistExpense);
-			Utils.focusOnButton("btnAddExp");
-		}
-		
-		$scope.saveAllIncomeRows = function(){
-			Utils.saveAllInputRows($scope.incomeItemsToAdd, validateAndPersistIncome);
 			Utils.focusOnButton("btnAddInc");
 		}
 
