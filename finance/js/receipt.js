@@ -104,7 +104,7 @@ financeControllers.controller('ReceiptCtrl', ['$scope', 'Utils',
 		
 		$scope.saveAllReceiptItems = function(){
 			$scope.calculatedReceiptItems.map(function(calcItem){
-				$scope.expensesToAdd.push({"tDate": $scope.receiptDate, "category": calcItem.category, "amount": calcItem.total, "isNew": true});
+				$scope.expensesToAdd.push({"tDate": $scope.receiptDate, "category": calcItem.category, "tType": "E", "amount": calcItem.total, "isNew": true});
 			});
 			$scope.showExpenses = true;
 			$scope.deleteAllReceiptItems();
