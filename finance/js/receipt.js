@@ -2,7 +2,7 @@
 financeControllers.controller('ReceiptCtrl', ['$scope', 'Utils', 
 	function ($scope, Utils) {
 
-		$scope.receiptTaxRate = 7.5;
+		$scope.receiptTaxRate = 7.25;
 		$scope.receiptItems = [];
 		$scope.receiptItemsSubtotal = 0.00;
 		$scope.taxTotal = 0.00;
