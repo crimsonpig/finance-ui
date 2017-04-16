@@ -95,7 +95,7 @@ financeServices.factory('BudgetItems', ['$resource',
 
 financeServices.factory('TransactionsReport', ['$resource',
 	function($resource){
-		return $resource('http://localhost:8082/reports/transactions');
+		return $resource('/reports/transactions');
 }]);
 
 financeServices.factory('BudgetComparison', ['$resource',
