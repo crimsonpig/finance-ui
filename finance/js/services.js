@@ -85,22 +85,22 @@ financeServices.factory('SearchCriteria', function(){
 
 financeServices.factory('Transactions', ['$resource',
 	function($resource){
-		return $resource('http://localhost:8082/transactions/:id');
+		return $resource('http://localhost:8080/transactions/:id');
 }]);
 
 financeServices.factory('BudgetItems', ['$resource',
 	function($resource){
-		return $resource('http://localhost:8082/budget/:id');
+		return $resource('http://localhost:8080/budget/:id');
 }]);
 
 financeServices.factory('TransactionsReport', ['$resource',
 	function($resource){
-		return $resource('/reports/transactions');
+		return $resource('http://localhost:8080/reports/transactions');
 }]);
 
 financeServices.factory('BudgetComparison', ['$resource',
 	function($resource){
-		return $resource('http://localhost:8082/budget/comparison');
+		return $resource('http://localhost:8080/budget/comparison');
 }]);
 
 financeServices.service('Utils', function(){
