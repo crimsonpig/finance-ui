@@ -100,7 +100,7 @@ financeServices.factory('TransactionsReport', ['$resource',
 
 financeServices.factory('BudgetComparison', ['$resource',
 	function($resource){
-		return $resource('http://localhost:8080/budget/comparison');
+		return $resource('http://localhost:8080/comparison');
 }]);
 
 financeServices.service('Utils', function(){
