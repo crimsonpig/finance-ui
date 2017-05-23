@@ -160,10 +160,6 @@ budgetControllers.controller('BudgetCtrl', ['$scope', 'ViewChangeCallbacks',
 					$scope.expItemsTotal += expense.amount;
 				});
 				return $scope.expItemsTotal.toFixed(2);
-		}	
-		
-		$scope.getNetTotal = function(){
-				return ($scope.incItemsTotal - $scope.expItemsTotal).toFixed(2);
 		}
 		
 }]);
