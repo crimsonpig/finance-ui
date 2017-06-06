@@ -14,6 +14,10 @@ financeApp.config(['$routeProvider', '$locationProvider', function($routeProvide
 			controller:'ReportCtrl',
 			templateUrl:'partials/reports.html'
 		})
+		.when('/budgetsummary', {
+			controller:'BudgetReportCtrl',
+			templateUrl:'partials/reports.html'
+		})
 		.when('/compare', {
 			controller:'CompareCtrl',
 			templateUrl:'partials/compare.html'

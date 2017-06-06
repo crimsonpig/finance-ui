@@ -98,6 +98,11 @@ financeServices.factory('TransactionsReport', ['$resource',
 		return $resource('http://localhost:8080/reports/transactions');
 }]);
 
+financeServices.factory('BudgetReport', ['$resource',
+	function($resource){
+		return $resource('http://localhost:8080/reports/budget');
+}]);
+
 financeServices.factory('BudgetComparison', ['$resource',
 	function($resource){
 		return $resource('http://localhost:8080/comparison');
