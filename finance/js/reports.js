@@ -21,15 +21,10 @@ reportControllers.controller('ReportCtrl', ['$scope', 'ViewChangeCallbacks', 'Se
 		
 		$scope.orderProps = { incomes: 'amount', expenses: 'category' };
 		$scope.orderToggles = { incomes: false, expenses: false };	
-		$scope.showIncomes = true;
-		$scope.showExpenses = true;		
+		$scope.toShow = { incomes: true, expenses: true};
 
-		$scope.displayIncomes = function(){
-			$scope.showIncomes = !($scope.showIncomes);
-		};
-
-		$scope.displayExpenses = function(){
-			$scope.showExpenses = !($scope.showExpenses);
+		$scope.displayOrHide = function(section){
+			$scope.toShow[section] = !($scope.toShow[section]);
 		};
 
 		$scope.sortReportItemsBy = function(reportType, newField){
@@ -66,16 +61,10 @@ reportControllers.controller('BudgetReportCtrl', ['$scope', 'ViewChangeCallbacks
 		
 		$scope.orderProps = { incomes: 'amount', expenses: 'category' };
 		$scope.orderToggles = { incomes: false, expenses: false };
+		$scope.toShow = { incomes: true, expenses: true};
 
-		$scope.showIncomes = true;
-		$scope.showExpenses = true;		
-
-		$scope.displayIncomes = function(){
-			$scope.showIncomes = !($scope.showIncomes);
-		};
-
-		$scope.displayExpenses = function(){
-			$scope.showExpenses = !($scope.showExpenses);
+		$scope.displayOrHide = function(section){
+			$scope.toShow[sect] = !($scope.toShow[sect]);
 		};
 
 		$scope.sortReportItemsBy = function(reportType, newField){
