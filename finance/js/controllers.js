@@ -30,8 +30,6 @@ financeControllers.controller('TransCtrl', ['$scope', 'ViewChangeCallbacks',
 		$scope.expOrderToggle = true;
 		$scope.incOrderProp = 'tDate';
 		$scope.incOrderToggle = true;
-		$scope.expTotal = 0.00;
-		$scope.incTotal = 0.00;
 		$scope.showIncomes = true;
 		$scope.showExpenses = true;
 		$scope.showReceipts = false;
@@ -166,21 +164,5 @@ financeControllers.controller('TransCtrl', ['$scope', 'ViewChangeCallbacks',
 				$scope.incomes.splice(idx,1);
 			}
 		}
-
-		$scope.getIncomeTotal = function(){
-				$scope.incTotal = 0.00;
-				angular.forEach($scope.incomes, function(income){ 
-					$scope.incTotal += income.amount;
-				});
-				return $scope.incTotal.toFixed(2);
-		}
-		
-		$scope.getExpenseTotal = function(){
-				$scope.expTotal = 0.00;
-				angular.forEach($scope.expenses, function(expense){
-					$scope.expTotal += expense.amount;
-				});
-				return $scope.expTotal.toFixed(2);
-		}	
 		
 }]);
