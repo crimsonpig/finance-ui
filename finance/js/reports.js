@@ -1,7 +1,7 @@
 var reportControllers = angular.module('reportControllers', []); 
 
 reportControllers.controller('ReportCtrl', ['$scope', 'ViewChangeCallbacks', 'SearchCriteria', 'TransactionsReport', 
-	function($scope, ViewChangeCallbacks, SearchCriteria, TransactionsReport) {
+	function($scope, ViewChangeCallbacks, SearchCriteria, ReportDataService) {
 		ViewChangeCallbacks.changeToView('summary');
 
 		function reloadReportCallback(startDate, endDate, category){
@@ -11,7 +11,7 @@ reportControllers.controller('ReportCtrl', ['$scope', 'ViewChangeCallbacks', 'Se
 				if(category != ''){
 					searchCriteria.category = category;
 				}
-				$scope.report = TransactionsReport.get(searchCriteria);
+				$scope.report = ReportDataService.get(searchCriteria);
 			}			
 		};
 		
@@ -56,7 +56,7 @@ reportControllers.controller('ReportCtrl', ['$scope', 'ViewChangeCallbacks', 'Se
 
 
 reportControllers.controller('BudgetReportCtrl', ['$scope', 'ViewChangeCallbacks', 'SearchCriteria', 'BudgetReport', 
-	function($scope, ViewChangeCallbacks, SearchCriteria, BudgetReport) {
+	function($scope, ViewChangeCallbacks, SearchCriteria, ReportDataService) {
 		ViewChangeCallbacks.changeToView('budgetsummary');
 
 		function reloadReportCallback(startDate, endDate, category){
@@ -66,7 +66,7 @@ reportControllers.controller('BudgetReportCtrl', ['$scope', 'ViewChangeCallbacks
 				if(category != ''){
 					searchCriteria.category = category;
 				}
-				$scope.report = BudgetReport.get(searchCriteria);
+				$scope.report = ReportDataService.get(searchCriteria);
 			}			
 		};
 		
