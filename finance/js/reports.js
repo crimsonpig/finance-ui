@@ -5,13 +5,13 @@ reportControllers.controller('ReportCtrl', ['$scope', 'ViewChangeCallbacks', 'Se
 		ViewChangeCallbacks.changeToView('summary');
 
 		function reloadReportCallback(startDate, endDate, category){
-			$scope.transactionsReport = {expenses:[], incomes:[]};
+			$scope.report = {expenses:[], incomes:[]};
 			if(startDate != '' && endDate != ''){
 				var searchCriteria = {startDt: startDate, endDt: endDate};
 				if(category != ''){
 					searchCriteria.category = category;
 				}
-				$scope.transactionsReport = TransactionsReport.get(searchCriteria);
+				$scope.report = TransactionsReport.get(searchCriteria);
 			}			
 		};
 		
