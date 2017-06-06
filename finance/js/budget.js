@@ -10,8 +10,6 @@ budgetControllers.controller('BudgetCtrl', ['$scope', 'ViewChangeCallbacks',
 		$scope.expOrderToggle = false;
 		$scope.incOrderProp = 'startDate';
 		$scope.incOrderToggle = false;
-		$scope.expItemsTotal = 0.00;
-		$scope.incItemsTotal = 0.00;
 		$scope.showIncomes = true;
 		$scope.showExpenses = true;
 
@@ -144,22 +142,6 @@ budgetControllers.controller('BudgetCtrl', ['$scope', 'ViewChangeCallbacks',
 				var idx = $scope.incomeItems.indexOf(income);
 				$scope.incomeItems.splice(idx,1);
 			}
-		}
-
-		$scope.getIncomeTotal = function(){
-				$scope.incItemsTotal = 0.00;
-				angular.forEach($scope.incomeItems, function(income){ 
-					$scope.incItemsTotal += income.amount;
-				});
-				return $scope.incItemsTotal.toFixed(2);
-		}
-		
-		$scope.getExpenseTotal = function(){
-				$scope.expItemsTotal = 0.00;
-				angular.forEach($scope.expenseItems, function(expense){
-					$scope.expItemsTotal += expense.amount;
-				});
-				return $scope.expItemsTotal.toFixed(2);
 		}
 		
 }]);
