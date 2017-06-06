@@ -11,7 +11,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="reportItem in report.incomes | orderBy:incOrderProp:incOrderToggle">
+					<tr ng-repeat="reportItem in report.incomes | orderBy:orderProps['incomes']:orderToggles['incomes']">
 						<td>{{reportItem.category}}</td>
 						<td>{{reportItem.amount.toFixed(2)}}</td>
 					</tr>			
@@ -30,7 +30,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="reportItem in report.expenses | orderBy:expOrderProp:expOrderToggle">
+					<tr ng-repeat="reportItem in report.expenses | orderBy:orderProps['expenses']:orderToggles['expenses']">
 						<td>{{reportItem.category}}</td>
 						<td>{{reportItem.amount.toFixed(2)}}</td>
 					</tr>

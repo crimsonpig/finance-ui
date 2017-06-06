@@ -19,10 +19,8 @@ reportControllers.controller('ReportCtrl', ['$scope', 'ViewChangeCallbacks', 'Se
 
 		reloadReportCallback(SearchCriteria.startDate, SearchCriteria.endDate, SearchCriteria.category);
 		
-		$scope.expOrderProp = 'category';
-		$scope.expOrderToggle = false;
-		$scope.incOrderProp = 'amount';
-		$scope.incOrderToggle = false;		
+		$scope.orderProps = { incomes: 'amount', expenses: 'category' };
+		$scope.orderToggles = { incomes: false, expenses: false };	
 		$scope.showIncomes = true;
 		$scope.showExpenses = true;		
 
@@ -34,23 +32,15 @@ reportControllers.controller('ReportCtrl', ['$scope', 'ViewChangeCallbacks', 'Se
 			$scope.showExpenses = !($scope.showExpenses);
 		};
 
-		$scope.sortReportItemsBy = function(reportType, fieldName){
-			if(reportType == 'expenses'){
-				if($scope.expOrderProp == fieldName){
-					$scope.expOrderToggle = !($scope.expOrderToggle);
-				}else{
-					$scope.expOrderProp = fieldName;
-					$scope.expOrderToggle = false;
-				}
-			}
-			else if(reportType == 'incomes'){
-				if($scope.incOrderProp == fieldName){
-					$scope.incOrderToggle = !($scope.incOrderToggle);
-				}else{
-					$scope.incOrderProp = fieldName;
-					$scope.incOrderToggle = false;
-				}
-			}
+		$scope.sortReportItemsBy = function(reportType, newField){
+			existingField = $scope.orderProps[reportType];
+			existingToggle = $scope.orderToggles[reportType];
+			newToggle = false;
+			if(newField == existingField){
+				newToggle = !existingToggle;
+			} 
+			$scope.orderProps[reportType] = newField;
+			$scope.orderToggles[reportType] = newToggle;
 		}
 }]);
 
@@ -74,10 +64,9 @@ reportControllers.controller('BudgetReportCtrl', ['$scope', 'ViewChangeCallbacks
 
 		reloadReportCallback(SearchCriteria.startDate, SearchCriteria.endDate, SearchCriteria.category);
 		
-		$scope.expOrderProp = 'category';
-		$scope.expOrderToggle = false;
-		$scope.incOrderProp = 'amount';
-		$scope.incOrderToggle = false;		
+		$scope.orderProps = { incomes: 'amount', expenses: 'category' };
+		$scope.orderToggles = { incomes: false, expenses: false };
+
 		$scope.showIncomes = true;
 		$scope.showExpenses = true;		
 
@@ -89,22 +78,14 @@ reportControllers.controller('BudgetReportCtrl', ['$scope', 'ViewChangeCallbacks
 			$scope.showExpenses = !($scope.showExpenses);
 		};
 
-		$scope.sortReportItemsBy = function(reportType, fieldName){
-			if(reportType == 'expenses'){
-				if($scope.expOrderProp == fieldName){
-					$scope.expOrderToggle = !($scope.expOrderToggle);
-				}else{
-					$scope.expOrderProp = fieldName;
-					$scope.expOrderToggle = false;
-				}
-			}
-			else if(reportType == 'incomes'){
-				if($scope.incOrderProp == fieldName){
-					$scope.incOrderToggle = !($scope.incOrderToggle);
-				}else{
-					$scope.incOrderProp = fieldName;
-					$scope.incOrderToggle = false;
-				}
-			}
+		$scope.sortReportItemsBy = function(reportType, newField){
+			existingField = $scope.orderProps[reportType];
+			existingToggle = $scope.orderToggles[reportType];
+			newToggle = false;
+			if(newField == existingField){
+				newToggle = !existingToggle;
+			} 
+			$scope.orderProps[reportType] = newField;
+			$scope.orderToggles[reportType] = newToggle;
 		}
 }]);
